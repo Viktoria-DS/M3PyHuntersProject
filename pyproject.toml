@@ -1,0 +1,11 @@
+[project]
+name = "m3projectpyhunt"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.14"
+dependencies = [
+    "django>=6.1",
+    "djangorestframework>=3.18.0",
+    "psycopg-binary>=3.3.4",
+    "simplejwt>=2.0.1",
+]
