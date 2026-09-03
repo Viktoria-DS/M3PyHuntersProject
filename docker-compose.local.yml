@@ -14,17 +14,5 @@ services:
       timeout: 5s
       retries: 5
 
-  web:
-      build: .
-      ports:
-        - "8000:8000"
-        - "80:80"
-      env_file:
-        - .env
-      depends_on:
-        - postgres
-      command: bash -c "uv run python manage.py migrate && uv run python manage.py runserver 0.0.0.0:8000"
-      restart: always
-
 volumes:
   pgdata:
