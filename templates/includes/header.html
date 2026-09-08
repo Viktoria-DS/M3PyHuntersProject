@@ -1,0 +1,36 @@
+{% load static %}
+
+<header>
+    <div class="header-container">
+        <a href="{%url 'products:product_list' %}" class="header__logo">
+            <img src="{% static 'img/logo.svg' %}" alt="Hop & Barley Logo">
+            <p class="logo-text">Hop & Barley</p>
+        </a>
+        <nav class="header__nav">
+            <ul>
+                <li><a href="{%url 'products:product_list' %}">Products</a></li>
+                <li><a href="{%url 'products:guides_recipes' %}">Guides & Recipes</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Block for unauthorized user -->
+        <div class="header__auth-buttons" id="auth-guest">
+            <a href="#" class="button button--secondary">Sign in</a>
+            <a href="#" class="button button--primary">Register</a>
+        </div>
+
+        <!-- Block for authorized user -->
+        <div class="header__user-actions" id="auth-user">
+            <a href="#" class="user-icon" aria-label="My Account">
+                <img src="{% static 'img/icons/User_alt.svg' %}" alt="User Account">
+            </a>
+            <a href="#" class="cart-icon" aria-label="Shopping Cart">
+                <img src="{% static 'img/icons/Shopping_bag.svg' %}" alt="Shopping Cart">
+            </a>
+
+        </div>
+    </div>
+</header>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров | Hop & Barley</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Link to your main CSS file -->
+    <link rel="stylesheet" href="../../static/css/main.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="header-container">
+        <a href="home.html" class="header__logo">
+            <img src="../../static/img/logo.svg" alt="Hop & Barley Logo">
+            <p class="logo-text">Hop & Barley</p>
+        </a>
+        <nav class="header__nav">
+            <ul>
+                <li><a href="home.html">Products</a></li>
+                <li><a href="guides-recipes.html">Guides & Recipes</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Block for unauthorized user -->
+        <div class="header__auth-buttons" id="auth-guest">
+            <a href="login.html" class="button button--secondary">Sign in</a>
+            <a href="register.html" class="button button--primary">Register</a>
+        </div>
+
+        <!-- Block for authorized user -->
+        <div class="header__user-actions" id="auth-user">
+            <a href="account.html" class="user-icon" aria-label="My Account">
+                <img src="../../static/img/icons/User_alt.svg" alt="User Account">
+            </a>
+            <a href="cart.html" class="cart-icon" aria-label="Shopping Cart">
+                <img src="../../static/img/icons/Shopping_bag.svg" alt="Shopping Cart">
+            </a>
+
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main>
+    <section class="hero-banner">
+        <img src="../../static/img/background/hopfen-fields.jpg" alt="Beautiful hops on a dark background" class="hero-banner__image">
+        <div class="hero-banner__overlay"></div>
+    </section>
+
+    <div class="container main-content-grid">
+        <aside class="sidebar filter-menu">
+            <div class="sidebar__section">
+                <h3 class="section-title">Keywords</h3>
+                <div class="keywords-list">
+                </div>
+            </div>
+
+            <div class="sidebar__section">
+                <h3 class="section-title">Product Type</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-container">Hops
+                        <input type="checkbox" data-keyword="Hops">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Malts
+                        <input type="checkbox" data-keyword="Malts">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Yeast
+                        <input type="checkbox" data-keyword="Yeast">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Adjuncts
+                        <input type="checkbox" data-keyword="Adjuncts">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <section class="products-area product-grid-section">
+            <div class="search-sort-bar">
+                <div class="search-input-wrapper">
+                    <input type="text" placeholder="Search" class="search-input">
+                    <button class="search-button" aria-label="Search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div class="sort-options">
+                    <button class="sort-button active-sort">
+                        <span>New</span>
+                    </button>
+                    <button class="sort-button">Price ascending</button>
+                    <button class="sort-button">Price descending</button>
+                    <button class="sort-button">Rating</button>
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <!-- Card 1: Citra Hops -->
+                <a href="product-citra-hops.html" class="product-card-link">
+                    <div class="product-card">
+                        <img src="../../static/img/products/citra_hops.jpg" alt="Citra Hops" class="product-card__image">
+                        <div class="product-card__info">
+                            <h4 class="product-card__name">Citra Hops</h4>
+                            <p class="product-card__price">$5.99</p>
+                            <p class="product-card__description">Ideal for IPAs and Pale Ales</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 2: Maris Otter Pale Malt -->
+                <a href="product-maris-otter-malt.html" class="product-card-link">
+                    <div class="product-card">
+                        <img src="../../static/img/products/maris_otter_malt.jpg" alt="Maris Otter Pale Malt" class="product-card__image">
+                        <div class="product-card__info">
+                            <h4 class="product-card__name">Maris Otter Pale Malt</h4>
+                            <p class="product-card__price">$2.50</p>
+                            <p class="product-card__description">Perfect for traditional ales</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 3: SafAle US-05 Dry Ale Yeast -->
+                <a href="product-safale-us05-yeast.html" class="product-card-link">
+                    <div class="product-card">
+                        <img src="../../static/img/products/safale_us05_yeast.jpg" alt="SafAle US-05 Dry Ale Yeast" class="product-card__image">
+                        <div class="product-card__info">
+                            <h4 class="product-card__name">SafAle US-05 Dry Ale Yeast</h4>
+                            <p class="product-card__price">$3.25</p>
+                            <p class="product-card__description">Clean fermenting American ale yeast</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 4: Cascade Hops -->
+                <a href="product-cascade-hops.html" class="product-card-link">
+                    <div class="product-card">
+                        <img src="../../static/img/products/cascade_hops.jpg" alt="Cascade Hops" class="product-card__image">
+                        <div class="product-card__info">
+                            <h4 class="product-card__name">Cascade Hops</h4>
+                            <p class="product-card__price">$7.49</p>
+                            <p class="product-card__description">Great for dry hopping</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 5: Caramel Malt 60L -->
+                <a href="product-caramel-malt.html" class="product-card-link">
+                    <div class="product-card">
+                        <img src="../../static/img/products/caramel_malt.jpg" alt="Caramel Malt 60L" class="product-card__image">
+                        <div class="product-card__info">
+                            <h4 class="product-card__name">Caramel Malt 60L</h4>
+                            <p class="product-card__price">$3.00</p>
+                            <p class="product-card__description">Head retention in darker beers</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 6: Saaz Hops -->
+                <a href="product-saaz-hops.html" class="product-card-link">
+                    <div class="product-card">
+                        <img src="../../static/img/products/saaz_hops.jpg" alt="Saaz Hops" class="product-card__image">
+                        <div class="product-card__info">
+                            <h4 class="product-card__name">Saaz Hops</h4>
+                            <p class="product-card__price">$4.75</p>
+                            <p class="product-card__description">Essential for Lagers</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 7: Pilsner Malt -->
+                <a href="product-pilsner-malt.html" class="product-card-link">
+                    <div class="product-card">
+                        <img src="../../static/img/products/pilsner_malt.jpg" alt="Pilsner Malt" class="product-card__image">
+                        <div class="product-card__info">
+                            <h4 class="product-card__name">Pilsner Malt</h4>
+                            <p class="product-card__price">$2.20</p>
+                            <p class="product-card__description">Foundation for lagers and pilsners</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 8: Imperial Organic Yeast A07 -->
+                <a href="product-imperial-yeast.html" class="product-card-link">
+                    <div class="product-card">
+                        <img src="../../static/img/products/imperial_yeast.jpg" alt="Imperial Organic Yeast A07" class="product-card__image">
+                        <div class="product-card__info">
+                            <h4 class="product-card__name">Imperial Organic Yeast A07</h4>
+                            <p class="product-card__price">$8.99</p>
+                            <p class="product-card__description">American ales with citrus notes</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 9: Centennial Hops -->
+                <a href="product-centennial-hops.html" class="product-card-link">
+                    <div class="product-card">
+                        <img src="../../static/img/products/centennial_hops.jpg" alt="Centennial Hops" class="product-card__image">
+                        <div class="product-card__info">
+                            <h4 class="product-card__name">Centennial Hops</h4>
+                            <p class="product-card__price">$6.20</p>
+                            <p class="product-card__description">Often called "Super Cascade"</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 10: Mosaic Hops-->
+                <a href="product-mosaic-hops.html" class="product-card-link">
+                    <div class="product-card">
+                        <img src="../../static/img/products/mosaic_hops.jpg" alt="mosaic-hops" class="product-card__image">
+                        <div class="product-card__info">
+                            <h4 class="product-card__name">Mosaic Hops</h4>
+                            <p class="product-card__price">$9.50</p>
+                            <p class="product-card__description">Ideal for IPAs and Pale Ales</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 11: West Coast IPA - All-Grain Kit -->
+                <a href="product-west-coast-ipa-kit.html" class="product-card-link">
+                    <div class="product-card">
+                        <img src="../../static/img/products/ipa_kit.jpg" alt="West Coast IPA - All-Grain Kit" class="product-card__image">
+                        <div class="product-card__info">
+                            <h4 class="product-card__name">West Coast IPA - All-Grain Kit</h4>
+                            <p class="product-card__price">$60</p>
+                            <p class="product-card__description">West Coast IPA</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 12: Unmalted Whea -->
+                <a href="product-unmalted-wheat.html" class="product-card-link">
+                    <div class="product-card">
+                        <img src="../../static/img/products/unmalted_wheat.jpg" alt="Blanche Malt" class="product-card__image">
+                        <div class="product-card__info">
+                            <h4 class="product-card__name">Unmalted Wheat</h4>
+                            <p class="product-card__price">$1.80</p>
+                            <p class="product-card__description">Belgian Witbier</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="pagination__link pagination__link--prev">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Previous</span>
+                </a>
+                <div class="pagination-list">
+                    <a href="#" class="pagination__link active">1</a>
+                    <a href="#" class="pagination__link">2</a>
+                    <a href="#" class="pagination__link">3</a>
+                    <span class="pagination__dots">...</span>
+                    <a href="#" class="pagination__link">20</a>
+                </div>
+                <a href="#" class="pagination__link pagination__link--next">
+                    <span>Next</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <img src="../../static/img/background/image-footer.svg" alt="Hop & Barley Hops Logo" class="footer__hops-logo">
+    <nav class="footer__nav">
+        <ul>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">License</a></li>
+        </ul>
+    </nav>
+    <p class="footer__copyright">© Hop & Barley 2025. All rights reserved</p>
+</footer>
+
+<script src="../../static/js/main.js"></script>
+</body>
+</html>

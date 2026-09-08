@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Dashboard | Hop & Barley</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../../../static/css/main.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="header-container">
+    <a href="../home.html" class="header__logo">
+      <img src="../../../static/img/logo.svg" alt="Hop & Barley Logo">
+      <p class="logo-text">Hop & Barley</p>
+    </a>
+    <nav class="header__nav">
+      <ul>
+        <li><a href="../home.html">Products</a></li>
+        <li><a href="guides-recipes.html">Guides & Recipes</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header__user-actions">
+      <a href="../account.html" class="user-icon" aria-label="My Account">
+        <img src="../../../static/img/icons/User_alt.svg" alt="User Account">
+      </a>
+      <a href="../cart.html" class="cart-icon" aria-label="Shopping Cart">
+        <img src="../../../static/img/icons/Shopping_bag.svg" alt="Shopping Cart">
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="admin-page-wrapper">
+  <div class="admin-container">
+    <!-- Tabs Navigation -->
+    <div class="admin-tabs">
+      <a href="products.html" class="admin-tab">Product Management</a>
+      <a href="dashboard.html" class="admin-tab active">Dashboard</a>
+    </div>
+
+    <!-- Content Area -->
+    <div class="admin-content">
+      <h1 class="admin-content__title">Admin - Dashboard</h1>
+
+      <!-- Filter Tags -->
+      <div class="category-tags">
+        <button type="button" class="category-tag active">Label</button>
+        <button type="button" class="category-tag">Label</button>
+        <button type="button" class="category-tag">Label</button>
+        <button type="button" class="category-tag">Label</button>
+      </div>
+
+      <!-- Stats Cards Grid -->
+      <div class="stats-grid">
+        <!-- Card 1: Total Sales -->
+        <div class="stat-card">
+          <div class="stat-card__header">
+            <span class="stat-card__title">Total Sales</span>
+            <div class="stat-card__icon-wrapper" style="background-color: #e0f8e3;">
+              <i class="fa-solid fa-arrow-trend-up" style="color: #34c759;"></i>
+            </div>
+          </div>
+          <p class="stat-card__value">$89,000</p>
+          <div class="stat-card__delta delta--down">
+            <i class="fa-solid fa-arrow-down"></i>
+            <span>4.3% Down from yesterday</span>
+          </div>
+        </div>
+        <!-- Card 2: Total User -->
+        <div class="stat-card">
+          <div class="stat-card__header">
+            <span class="stat-card__title">Total User</span>
+            <div class="stat-card__icon-wrapper" style="background-color: #e6e5ff;">
+              <i class="fa-solid fa-users" style="color: #5856d6;"></i>
+            </div>
+          </div>
+          <p class="stat-card__value">40,689</p>
+          <div class="stat-card__delta delta--up">
+            <i class="fa-solid fa-arrow-up"></i>
+            <span>8.5% Up from yesterday</span>
+          </div>
+        </div>
+        <!-- Card 3: Total Order -->
+        <div class="stat-card">
+          <div class="stat-card__header">
+            <span class="stat-card__title">Total Order</span>
+            <div class="stat-card__icon-wrapper" style="background-color: #fff0d4;">
+              <i class="fa-solid fa-box-archive" style="color: #ff9f0a;"></i>
+            </div>
+          </div>
+          <p class="stat-card__value">10293</p>
+          <div class="stat-card__delta delta--up">
+            <i class="fa-solid fa-arrow-up"></i>
+            <span>1.3% Up from past week</span>
+          </div>
+        </div>
+        <!-- Card 4: Total Pending -->
+        <div class="stat-card">
+          <div class="stat-card__header">
+            <span class="stat-card__title">Total Pending</span>
+            <div class="stat-card__icon-wrapper" style="background-color: #ffe6e0;">
+              <i class="fa-solid fa-clock-rotate-left" style="color: #ff3b30;"></i>
+            </div>
+          </div>
+          <p class="stat-card__value">2040</p>
+          <div class="stat-card__delta delta--up">
+            <i class="fa-solid fa-arrow-up"></i>
+            <span>1.8% Up from yesterday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<!--<footer>-->
+<!--  <img src="../../static/img/background/image-footer.svg" alt="Hop & Barley Hops Logo" class="footer__hops-logo">-->
+<!--  <nav class="footer__nav">-->
+<!--    <ul>-->
+<!--      <li><a href="#">Contact</a></li>-->
+<!--      <li><a href="#">FAQ</a></li>-->
+<!--      <li><a href="#">Community</a></li>-->
+<!--      <li><a href="#">Resources</a></li>-->
+<!--      <li><a href="#">License</a></li>-->
+<!--    </ul>-->
+<!--  </nav>-->
+<!--  <p class="footer__copyright">© Hop & Barley 2025. All rights reserved</p>-->
+<!--</footer>-->
+
+<!-- JS -->
+<script src="../../../static/js/main.js"></script>
+</body>
+</html>

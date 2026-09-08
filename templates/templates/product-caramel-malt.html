@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caramel Malt 60L | Hop & Barley</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../../static/css/main.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="header-container">
+    <a href="home.html" class="header__logo">
+      <img src="../../static/img/logo.svg" alt="Hop & Barley Logo">
+      <p class="logo-text">Hop & Barley</p>
+    </a>
+    <nav class="header__nav">
+      <ul>
+        <li><a href="home.html">Products</a></li>
+        <li><a href="guides-recipes.html">Guides & Recipes</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header__auth-buttons" id="auth-guest">
+      <a href="login.html" class="button button--secondary">Sign in</a>
+      <a href="register.html" class="button button--primary">Register</a>
+    </div>
+    <div class="header__user-actions" id="auth-user">
+      <a href="account.html" class="user-icon" aria-label="My Account">
+        <img src="../../static/img/icons/User_alt.svg" alt="User Account">
+      </a>
+      <a href="cart.html" class="cart-icon" aria-label="Shopping Cart">
+        <img src="../../static/img/icons/Shopping_bag.svg" alt="Shopping Cart">
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="page-product">
+  <div class="container">
+    <!-- Product Info Section -->
+    <section class="product-details-section">
+      <div class="product-image-container">
+        <img src="../../static/img/products/caramel_malt.jpg" alt="Caramel Malt 60L" class="product-image">
+      </div>
+      <div class="product-info-column">
+        <div class="product-title-price">
+          <h1 class="product-name">Caramel Malt 60L</h1>
+          <div class="price-section">
+            <span class="price-tag">per 1 lb</span>
+            <p class="product-price">$3.00</p>
+          </div>
+        </div>
+        <div class="product-description">
+          <p>Caramel Malt 60L (also known as Crystal 60L) is a versatile specialty malt that is a secret weapon for many brewers to enhance beer color, flavor, and body. It imparts a beautiful copper-amber hue to the brew.</p>
+          <p>The flavor of this malt is characterized by distinct notes of caramel, toffee, and light hints of toasted bread. It adds a pleasant sweetness to the beer that beautifully balances hop bitterness and also contributes to improved head retention.</p>
+          <p>Caramel Malt 60L is ideal for a wide range of styles, from Pale Ales and Amber Ales to Porters and Stouts, adding complexity and depth.</p>
+        </div>
+        <div class="cart-controls">
+          <button class="button button--primary add-to-cart-button" id="add-to-cart-btn">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Add to Cart</span>
+          </button>
+          <div class="quantity-counter is-hidden" id="quantity-counter">
+            <button class="quantity-btn" data-action="decrease" aria-label="Decrease quantity"><i class="fa-solid fa-minus"></i></button>
+            <span class="quantity-value">1 in cart</span>
+            <button class="quantity-btn" data-action="increase" aria-label="Increase quantity"><i class="fa-solid fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Specifications Accordion -->
+    <section class="accordion-section">
+      <div class="accordion-item">
+        <div class="accordion-title">
+          <h3>Technical Specifications</h3>
+          <i class="fa-solid fa-chevron-down accordion-icon"></i>
+        </div>
+        <div class="accordion-content">
+          <ul>
+            <li><strong>Origin:</strong> USA / Belgium</li>
+            <li><strong>Type:</strong> Crystal/Caramel Malt</li>
+            <li><strong>Color (°L):</strong> 60 °L</li>
+            <li><strong>Moisture:</strong> 5.0% max</li>
+            <li><strong>Extract FG, Dry:</strong> 75%</li>
+            <li><strong>Flavor Profile:</strong> Sweet, caramel, toffee, hints of toasted bread</li>
+            <li><strong>Usage:</strong> Typically 3-15% of the grist</li>
+            <li><strong>Recommended Beer Styles:</strong> Pale Ale, Amber Ale, IPA, Brown Ale, Porter, Stout, Scotch Ale</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Reviews Section -->
+    <section class="reviews-section">
+      <h2 class="reviews-title">Latest reviews</h2>
+      <div class="reviews-grid">
+        <!-- Review Card 1 -->
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="review-body">
+            <h4 class="review-heading">The Perfect Sweet Spot</h4>
+            <p class="review-text">60L is my favorite caramel malt. It's not too light and not too dark. It provides the perfect balance of sweetness and caramel flavor for my Amber Ales. The color comes out just gorgeous.</p>
+          </div>
+          <div class="review-author">
+            <img src="../../static/img/avatars/avatar1.svg" alt="User avatar" class="author-avatar">
+            <span class="author-name">AmberAleFanatic</span>
+          </div>
+        </div>
+        <!-- Review Card 2 -->
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="review-body">
+            <h4 class="review-heading">Never Brew Without It</h4>
+            <p class="review-text">I add a bit of C60 to almost every recipe. It improves head retention and gives the beer a finished quality that's hard to achieve otherwise. Works great in IPAs to balance the bitterness.</p>
+          </div>
+          <div class="review-author">
+            <img src="../../static/img/avatars/avatar2.svg" alt="User avatar" class="author-avatar">
+            <span class="author-name">BrewMore</span>
+          </div>
+        </div>
+        <!-- Review Card 3 -->
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="review-body">
+            <h4 class="review-heading">Consistent and Reliable</h4>
+            <p class="review-text">The quality of this malt is always top-notch. Consistent color, wonderful aroma when crushed. If a recipe calls for Crystal 60, this is the one I always reach for. Recommended.</p>
+          </div>
+          <div class="review-author">
+            <img src="../../static/img/avatars/avatar3.svg" alt="User avatar" class="author-avatar">
+            <span class="author-name">ConsistentBrewer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <img src="../../static/img/background/image-footer.svg" alt="Hop & Barley Hops Logo" class="footer__hops-logo">
+  <nav class="footer__nav">
+    <ul>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">License</a></li>
+    </ul>
+  </nav>
+  <p class="footer__copyright">© Hop & Barley 2025. All rights reserved</p>
+</footer>
+
+<!-- JS -->
+<script src="../../static/js/main.js"></script>
+</body>
+</html>

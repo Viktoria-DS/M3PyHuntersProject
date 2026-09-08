@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unmalted Wheat | Hop & Barley</title>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../../static/css/main.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="header-container">
+        <a href="home.html" class="header__logo">
+            <img src="../../static/img/logo.svg" alt="Hop & Barley Logo">
+            <p class="logo-text">Hop & Barley</p>
+        </a>
+        <nav class="header__nav">
+            <ul>
+                <li><a href="home.html">Products</a></li>
+                <li><a href="guides-recipes.html">Guides & Recipes</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header__auth-buttons" id="auth-guest">
+            <a href="login.html" class="button button--secondary">Sign in</a>
+            <a href="register.html" class="button button--primary">Register</a>
+        </div>
+        <div class="header__user-actions" id="auth-user">
+            <a href="account.html" class="user-icon" aria-label="My Account">
+                <img src="../../static/img/icons/User_alt.svg" alt="User Account">
+            </a>
+            <a href="cart.html" class="cart-icon" aria-label="Shopping Cart">
+                <img src="../../static/img/icons/Shopping_bag.svg" alt="Shopping Cart">
+            </a>
+
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="page-product">
+    <div class="container">
+        <!-- Product Info Section -->
+        <section class="product-details-section">
+            <div class="product-image-container">
+                <img src="../../static/img/products/unmalted_wheat.jpg" alt="Unmalted Wheat" class="product-image">
+            </div>
+            <div class="product-info-column">
+                <div class="product-title-price">
+                    <h1 class="product-name">Unmalted Wheat</h1>
+                    <div class="price-section">
+                        <span class="price-tag">per 1 lb</span>
+                        <p class="product-price">$1.80</p>
+                    </div>
+                </div>
+                <div class="product-description">
+                    <p>Unmalted wheat is the secret ingredient behind the classic hazy, refreshing character of Belgian Witbier. Unlike malted wheat, this is raw, unprocessed grain that imparts a unique texture and flavor to the beer.</p>
+                    <p>Using unmalted wheat provides the beer with its characteristic light haze, a smooth, silky body, and a subtle, bready-grainy flavor that doesn't overpower the delicate notes of coriander and orange peel. The high protein content of this grain also contributes to a dense and persistent head.</p>
+                    <p>This ingredient is a must-have for any brewer aiming to recreate an authentic Belgian Witbier or to add complexity and body to other styles, such as Lambics.</p>
+                </div>
+                <div class="cart-controls">
+                    <button class="button button--primary add-to-cart-button" id="add-to-cart-btn">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Add to Cart</span>
+                    </button>
+                    <div class="quantity-counter is-hidden" id="quantity-counter">
+                        <button class="quantity-btn" data-action="decrease" aria-label="Decrease quantity"><i class="fa-solid fa-minus"></i></button>
+                        <span class="quantity-value">1 in cart</span>
+                        <button class="quantity-btn" data-action="increase" aria-label="Increase quantity"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Specifications Accordion -->
+        <section class="accordion-section">
+            <div class="accordion-item">
+                <div class="accordion-title">
+                    <h3>Technical Specifications</h3>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Origin:</strong> Belgium / USA</li>
+                        <li><strong>Type:</strong> Unmalted Adjunct</li>
+                        <li><strong>Color (°L):</strong> ~2.0 °L</li>
+                        <li><strong>Moisture:</strong> 12% max</li>
+                        <li><strong>Protein:</strong> High (contributes to haze and head retention)</li>
+                        <li><strong>Flavor Profile:</strong> Neutral, subtle raw grain, bready</li>
+                        <li><strong>Usage:</strong> Typically 30-50% of the grist for Witbiers. Requires a cereal mash or a mash with high diastatic power malts (like Pilsner or 6-Row).</li>
+                        <li><strong>Recommended Beer Styles:</strong> Belgian Witbier, Lambic, Grand Cru, certain Saisons.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Reviews Section -->
+        <section class="reviews-section">
+            <h2 class="reviews-title">Latest reviews</h2>
+            <div class="reviews-grid">
+                <!-- Review Card 1 -->
+                <div class="review-card">
+                    <div class="review-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="review-body">
+                        <h4 class="review-heading">The Key to a True Wit</h4>
+                        <p class="review-text">I tried brewing witbiers with malted wheat, and they were okay. But as soon as I added unmalted wheat, everything fell into place! That signature light haze, that smoothness. This is it!</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="../../static/img/avatars/avatar2.svg" alt="User avatar" class="author-avatar">
+                        <span class="author-name">BelgianBeerGeek</span>
+                    </div>
+                </div>
+                <!-- Review Card 2 -->
+                <div class="review-card">
+                    <div class="review-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="review-body">
+                        <h4 class="review-heading">Don't Forget the Rice Hulls!</h4>
+                        <p class="review-text">Great product, gives the beer a perfect body. A little tip: don't forget to add rice hulls to the mash! This wheat is very sticky and can completely clog your filter bed. With hulls, no problem at all.</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="../../static/img/avatars/avatar3.svg" alt="User avatar" class="author-avatar">
+                        <span class="author-name">MashMaster_Pro</span>
+                    </div>
+                </div>
+                <!-- Review Card 3 -->
+                <div class="review-card">
+                    <div class="review-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    </div>
+                    <div class="review-body">
+                        <h4 class="review-heading">Great result, tricky to work with</h4>
+                        <p class="review-text">The result exceeded expectations, the witbier turned out silky and delicious. But it's definitely trickier to work with than malt. You need a good mill and patience during sparging. But for an authentic taste, it's worth it.</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="../../static/img/avatars/avatar4.svg" alt="User avatar" class="author-avatar">
+                        <span class="author-name">PatientBrewer</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <img src="../../static/img/background/image-footer.svg" alt="Hop & Barley Hops Logo" class="footer__hops-logo">
+    <nav class="footer__nav">
+        <ul>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">License</a></li>
+        </ul>
+    </nav>
+    <p class="footer__copyright">© Hop & Barley 2025. All rights reserved</p>
+</footer>
+
+<!-- JS -->
+<script src="../../static/js/main.js"></script>
+</body>
+</html>

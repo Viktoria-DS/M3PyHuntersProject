@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maris Otter Pale Malt | Hop & Barley</title>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../../static/css/main.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="header-container">
+        <a href="home.html" class="header__logo">
+            <img src="../../static/img/logo.svg" alt="Hop & Barley Logo">
+            <p class="logo-text">Hop & Barley</p>
+        </a>
+        <nav class="header__nav">
+            <ul>
+                <li><a href="home.html">Products</a></li>
+                <li><a href="guides-recipes.html">Guides & Recipes</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header__auth-buttons" id="auth-guest">
+            <a href="login.html" class="button button--secondary">Sign in</a>
+            <a href="register.html" class="button button--primary">Register</a>
+        </div>
+        <div class="header__user-actions" id="auth-user">
+            <a href="account.html" class="user-icon" aria-label="My Account">
+                <img src="../../static/img/icons/User_alt.svg" alt="User Account">
+            </a>
+            <a href="cart.html" class="cart-icon" aria-label="Shopping Cart">
+                <img src="../../static/img/icons/Shopping_bag.svg" alt="Shopping Cart">
+            </a>
+
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="page-product">
+    <div class="container">
+        <!-- Product Info Section -->
+        <section class="product-details-section">
+            <div class="product-image-container">
+                <img src="../../static/img/products/maris_otter_malt.jpg" alt="Maris Otter Pale Malt" class="product-image">
+            </div>
+            <div class="product-info-column">
+                <div class="product-title-price">
+                    <h1 class="product-name">Maris Otter Pale Malt</h1>
+                    <div class="price-section">
+                        <span class="price-tag">per 1 lb</span>
+                        <p class="product-price">$2.50</p>
+                    </div>
+                </div>
+                <div class="product-description">
+                    <p>Maris Otter Pale Malt is the cornerstone of British brewing heritage, a revered base malt prized by brewers worldwide for its exceptional quality and flavor.</p>
+                    <p>It provides a rich, slightly sweet, and biscuity malt backbone that is more complex than standard 2-row malts, with subtle nutty undertones that enhance any beer style. Perfect for creating authentic British ales such as Bitters, IPAs, Porters, and Stouts.</p>
+                    <p>Its excellent processing characteristics and high extract yield make it a reliable and efficient choice for both novice and experienced brewers.</p>
+                </div>
+                <div class="cart-controls">
+                    <button class="button button--primary add-to-cart-button" id="add-to-cart-btn">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Add to Cart</span>
+                    </button>
+                    <div class="quantity-counter is-hidden" id="quantity-counter">
+                        <button class="quantity-btn" data-action="decrease" aria-label="Decrease quantity"><i class="fa-solid fa-minus"></i></button>
+                        <span class="quantity-value">1 in cart</span>
+                        <button class="quantity-btn" data-action="increase" aria-label="Increase quantity"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Specifications Accordion -->
+        <section class="accordion-section">
+            <div class="accordion-item">
+                <div class="accordion-title">
+                    <h3>Technical Specifications</h3>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Origin:</strong> United Kingdom</li>
+                        <li><strong>Type:</strong> Base Malt</li>
+                        <li><strong>Color (°L):</strong> 2.5 - 4.0 °L</li>
+                        <li><strong>Moisture:</strong> 4.0% max</li>
+                        <li><strong>Protein:</strong> 9.5% - 10.5%</li>
+                        <li><strong>Diastatic Power:</strong> ≈ 120 °L</li>
+                        <li><strong>Usage:</strong> Up to 100% of the grist</li>
+                        <li><strong>Recommended Beer Styles:</strong> English Pale Ale, ESB, Bitter, Porter, Stout, Mild Ale</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Reviews Section -->
+        <section class="reviews-section">
+            <h2 class="reviews-title">Latest reviews</h2>
+            <div class="reviews-grid">
+                <!-- Review Card 1 -->
+                <div class="review-card">
+                    <div class="review-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="review-body">
+                        <h4 class="review-heading">The Gold Standard!</h4>
+                        <p class="review-text">Unbeatable flavor for my bitters. If you want to brew a real British ale, you have to start with this malt. Fantastic efficiency and a wonderful aroma during the mash. 10/10.</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="../../static/img/avatars/avatar2.svg" alt="User avatar" class="author-avatar">
+                        <span class="author-name">UKAleMaster</span>
+                    </div>
+                </div>
+                <!-- Review Card 2 -->
+                <div class="review-card">
+                    <div class="review-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="review-body">
+                        <h4 class="review-heading">Incredibly Reliable and Flavorful</h4>
+                        <p class="review-text">I've been using this malt for years. It always crushes perfectly, gives predictable results, and lends a depth to the beer that you just can't find in other base malts. Perfect for porters.</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="../../static/img/avatars/avatar3.svg" alt="User avatar" class="author-avatar">
+                        <span class="author-name">MashAndSparge</span>
+                    </div>
+                </div>
+                <!-- Review Card 3 -->
+                <div class="review-card">
+                    <div class="review-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                    </div>
+                    <div class="review-body">
+                        <h4 class="review-heading">Adds Great Complexity</h4>
+                        <p class="review-text">I usually use American 2-row, but decided to try Maris Otter for my pale ale. The difference is noticeable! It added pleasant biscuit notes. A bit more expensive, so 4 stars, but the flavor is a solid 5.</p>
+                    </div>
+                    <div class="review-author">
+                        <img src="../../static/img/avatars/avatar4.svg" alt="User avatar" class="author-avatar">
+                        <span class="author-name">CraftyBrewer_USA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <img src="../../static/img/background/image-footer.svg" alt="Hop & Barley Hops Logo" class="footer__hops-logo">
+    <nav class="footer__nav">
+        <ul>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">License</a></li>
+        </ul>
+    </nav>
+    <p class="footer__copyright">© Hop & Barley 2025. All rights reserved</p>
+</footer>
+
+<!-- JS -->
+<script src="../../static/js/main.js"></script>
+</body>
+</html>

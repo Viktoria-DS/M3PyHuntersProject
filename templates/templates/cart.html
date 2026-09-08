@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart | Hop & Barley</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../../static/css/main.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="header-container">
+    <a href="home.html" class="header__logo">
+      <img src="../../static/img/logo.svg" alt="Hop & Barley Logo">
+      <p class="logo-text">Hop & Barley</p>
+    </a>
+    <nav class="header__nav">
+      <ul>
+        <li><a href="home.html">Products</a></li>
+        <li><a href="guides-recipes.html">Guides & Recipes</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header__auth-buttons" id="auth-guest">
+      <a href="login.html" class="button button--secondary">Sign in</a>
+      <a href="register.html" class="button button--primary">Register</a>
+    </div>
+    <div class="header__user-actions" id="auth-user">
+      <a href="account.html" class="user-icon" aria-label="My Account">
+        <img src="../../static/img/icons/User_alt.svg" alt="User Account">
+      </a>
+      <a href="cart.html" class="cart-icon" aria-label="Shopping Cart">
+        <img src="../../static/img/icons/Shopping_bag.svg" alt="Shopping Cart">
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="cart-page-wrapper">
+  <div class="cart-container">
+    <h1 class="cart-title">Shopping Cart</h1>
+
+    <div class="cart-items-list" id="cart-items-list">
+      <!-- Cart Item 1 -->
+      <div class="cart-item" data-price="5.99">
+        <img src="../../static/img/products/citra_hops.jpg" alt="Citra Hops" class="cart-item__image">
+        <div class="cart-item__body">
+          <div class="cart-item__details">
+            <h2 class="cart-item__name">Citra Hops</h2>
+            <div class="cart-item__price-info">
+              <p class="cart-item__price" data-item-total-price>
+                $29.95
+              </p>
+              <span class="cart-item__price-tag">per 100g</span>
+            </div>
+          </div>
+          <div class="cart-item__actions">
+            <div class="cart-item__quantity-selector">
+              <button class="quantity-btn-cart" data-action="decrease"><i class="fa-solid fa-minus"></i></button>
+              <span class="quantity-value-cart">5</span>
+              <button class="quantity-btn-cart" data-action="increase"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <button class="button--remove" data-action="remove">
+              Remove <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cart Item 2 -->
+      <div class="cart-item" data-price="3.00">
+        <img src="../../static/img/products/caramel_malt.jpg" alt="Caramel Malt 60L" class="cart-item__image">
+        <div class="cart-item__body">
+          <div class="cart-item__details">
+            <h2 class="cart-item__name">Caramel Malt 60L</h2>
+            <div class="cart-item__price-info">
+              <p class="cart-item__price" data-item-total-price>
+                $3.00
+              </p>
+              <span class="cart-item__price-tag">per 1 lb</span>
+            </div>
+          </div>
+          <div class="cart-item__actions">
+            <div class="cart-item__quantity-selector">
+              <button class="quantity-btn-cart" data-action="decrease"><i class="fa-solid fa-minus"></i></button>
+              <span class="quantity-value-cart">1</span>
+              <button class="quantity-btn-cart" data-action="increase"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <button class="button--remove" data-action="remove">
+              Remove <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <div class="cart-summary__total">
+        <p>Total</p>
+        <p id="cart-total-price">$32.95</p>
+      </div>
+      <a href="checkout.html" class="button button--primary button--checkout">Proceed to Checkout</a>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <img src="../../static/img/background/image-footer.svg" alt="Hop & Barley Hops Logo" class="footer__hops-logo">
+  <nav class="footer__nav">
+    <ul>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">License</a></li>
+    </ul>
+  </nav>
+  <p class="footer__copyright">© Hop & Barley 2025. All rights reserved</p>
+</footer>
+
+<!-- JS -->
+<script src="../../static/js/main.js"></script>
+</body>
+</html>

@@ -128,23 +128,19 @@ USE_I18N = True
 USE_TZ = True
 
 
+
 STATIC_URL = 'static/'
-
-if DEBUG:
-    STATIC_ROOT = BASE_DIR / 'static'
-
-else:
-    STATICFILES_DIRS = [
-        BASE_DIR / 'static',
-        "/var/www/static",
-    ]
+# STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = [ # NOT FOR PRODUCTION
+    BASE_DIR / "static",
+]
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
 
 MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+SITE_NAME = 'PyBlog'

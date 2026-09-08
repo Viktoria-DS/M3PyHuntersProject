@@ -22,17 +22,20 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from products.views import ProductListView
+
 APPS_URLS = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    path('api/orders/', include('orders.urls')),
-    path('api/products/', include('products.urls')),
-    path('api/reviews/', include('reviews.urls')),
-    path('api/shop/', include('shop.urls')),
+    path('orders/', include('orders.urls', namespace = 'orders')),
+    path('products/', include('products.urls', namespace = 'products')),
+    path('reviews/', include('reviews.urls', namespace = 'reviews')),
+    path('shop/', include('shop.urls', namespace = 'shop')),
+    path('', ProductListView.as_view(), name='product-list_main'),
 
 ]
 MEDIA_URLS = [
-    *static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
+    #*static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ]
 

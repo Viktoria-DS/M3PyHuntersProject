@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilsner Malt | Hop & Barley</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../../static/css/main.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="header-container">
+    <a href="home.html" class="header__logo">
+      <img src="../../static/img/logo.svg" alt="Hop & Barley Logo">
+      <p class="logo-text">Hop & Barley</p>
+    </a>
+    <nav class="header__nav">
+      <ul>
+        <li><a href="home.html">Products</a></li>
+        <li><a href="guides-recipes.html">Guides & Recipes</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header__auth-buttons" id="auth-guest">
+      <a href="login.html" class="button button--secondary">Sign in</a>
+      <a href="register.html" class="button button--primary">Register</a>
+    </div>
+    <div class="header__user-actions" id="auth-user">
+      <a href="account.html" class="user-icon" aria-label="My Account">
+        <img src="../../static/img/icons/User_alt.svg" alt="User Account">
+      </a>
+      <a href="cart.html" class="cart-icon" aria-label="Shopping Cart">
+        <img src="../../static/img/icons/Shopping_bag.svg" alt="Shopping Cart">
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="page-product">
+  <div class="container">
+    <!-- Product Info Section -->
+    <section class="product-details-section">
+      <div class="product-image-container">
+        <img src="../../static/img/products/pilsner_malt.jpg" alt="Pilsner Malt" class="product-image">
+      </div>
+      <div class="product-info-column">
+        <div class="product-title-price">
+          <h1 class="product-name">Pilsner Malt</h1>
+          <div class="price-section">
+            <span class="price-tag">per 1 lb</span>
+            <p class="product-price">$2.20</p>
+          </div>
+        </div>
+        <div class="product-description">
+          <p>Pilsner Malt is the lightest base malt, forming the foundation for classic German and Czech pilsners, as well as a multitude of other light lagers and ales. It is produced from high-quality two-row barley and undergoes gentle kilning at low temperatures.</p>
+          <p>This malt imparts a very light, straw-like color and a clean, slightly sweet, grainy flavor to the beer. Its neutral character allows the aroma of hops and the work of the yeast to fully express themselves, making it an ideal base for beers where purity and crispness are paramount.</p>
+          <p>Thanks to its high enzymatic activity, Pilsner Malt is excellent for mashes with a large proportion of unmalted grains.</p>
+        </div>
+        <div class="cart-controls">
+          <button class="button button--primary add-to-cart-button" id="add-to-cart-btn">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Add to Cart</span>
+          </button>
+          <div class="quantity-counter is-hidden" id="quantity-counter">
+            <button class="quantity-btn" data-action="decrease" aria-label="Decrease quantity"><i class="fa-solid fa-minus"></i></button>
+            <span class="quantity-value">1 in cart</span>
+            <button class="quantity-btn" data-action="increase" aria-label="Increase quantity"><i class="fa-solid fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Specifications Accordion -->
+    <section class="accordion-section">
+      <div class="accordion-item">
+        <div class="accordion-title">
+          <h3>Technical Specifications</h3>
+          <i class="fa-solid fa-chevron-down accordion-icon"></i>
+        </div>
+        <div class="accordion-content">
+          <ul>
+            <li><strong>Origin:</strong> Germany / Belgium</li>
+            <li><strong>Type:</strong> Base Malt</li>
+            <li><strong>Color (°L):</strong> 1.5 - 2.1 °L</li>
+            <li><strong>Moisture:</strong> 4.5% max</li>
+            <li><strong>Protein:</strong> 10.0% - 11.5%</li>
+            <li><strong>Diastatic Power:</strong> > 100 °Lintner</li>
+            <li><strong>Flavor Profile:</strong> Clean, light, sweet, grainy</li>
+            <li><strong>Usage:</strong> Up to 100% of the grist</li>
+            <li><strong>Recommended Beer Styles:</strong> Pilsner, Helles, Kolsch, Belgian Tripel, Light Lagers, Saison</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Reviews Section -->
+    <section class="reviews-section">
+      <h2 class="reviews-title">Latest reviews</h2>
+      <div class="reviews-grid">
+        <!-- Review Card 1 -->
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="review-body">
+            <h4 class="review-heading">The Heart of a Good Lager</h4>
+            <p class="review-text">If you want to brew a true, crisp pilsner, you can't do without this malt. It provides that clean, light base on which everything else is built. Works perfectly.</p>
+          </div>
+          <div class="review-author">
+            <img src="../../static/img/avatars/avatar7.svg" alt="User avatar" class="author-avatar">
+            <span class="author-name">LagerLover</span>
+          </div>
+        </div>
+        <!-- Review Card 2 -->
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="review-body">
+            <h4 class="review-heading">Clean Canvas</h4>
+            <p class="review-text">I use this malt as a "clean canvas" for many of my varieties. It doesn't interfere, but only enhances the other ingredients. Ideal for experimenting with hops or yeast. The quality is always top-notch.</p>
+          </div>
+          <div class="review-author">
+            <img src="../../static/img/avatars/avatar8.svg" alt="User avatar" class="author-avatar">
+            <span class="author-name">TheMaltster</span>
+          </div>
+        </div>
+        <!-- Review Card 3 -->
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+          </div>
+          <div class="review-body">
+            <h4 class="review-heading">Very Light, Be Aware</h4>
+            <p class="review-text">Excellent malt, but it's really very light. If you want any color at all, be sure to add specialty malts. For pilsners - it's super, but for pale ales I'd prefer something darker. Otherwise, no complaints.</p>
+          </div>
+          <div class="review-author">
+            <img src="../../static/img/avatars/avatar9.svg" alt="User avatar" class="author-avatar">
+            <span class="author-name">HomebrewHobbyist</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <img src="../../static/img/background/image-footer.svg" alt="Hop & Barley Hops Logo" class="footer__hops-logo">
+  <nav class="footer__nav">
+    <ul>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">License</a></li>
+    </ul>
+  </nav>
+  <p class="footer__copyright">© Hop & Barley 2025. All rights reserved</p>
+</footer>
+
+<!-- JS -->
+<script src="../../static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>West Coast IPA - All-Grain Kit | Hop & Barley</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="../../static/css/main.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="header-container">
+    <a href="home.html" class="header__logo">
+      <img src="../../static/img/logo.svg" alt="Hop & Barley Logo">
+      <p class="logo-text">Hop & Barley</p>
+    </a>
+    <nav class="header__nav">
+      <ul>
+        <li><a href="home.html">Products</a></li>
+        <li><a href="guides-recipes.html">Guides & Recipes</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Resources</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header__auth-buttons" id="auth-guest">
+      <a href="login.html" class="button button--secondary">Sign in</a>
+      <a href="register.html" class="button button--primary">Register</a>
+    </div>
+    <div class="header__user-actions" id="auth-user">
+      <a href="account.html" class="user-icon" aria-label="My Account">
+        <img src="../../static/img/icons/User_alt.svg" alt="User Account">
+      </a>
+      <a href="cart.html" class="cart-icon" aria-label="Shopping Cart">
+        <img src="../../static/img/icons/Shopping_bag.svg" alt="Shopping Cart">
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="page-product">
+  <div class="container">
+    <!-- Product Info Section -->
+    <section class="product-details-section">
+      <div class="product-image-container">
+        <img src="../../static/img/products/ipa_kit.jpg" alt="West Coast IPA - All-Grain Kit" class="product-image">
+      </div>
+      <div class="product-info-column">
+        <div class="product-title-price">
+          <h1 class="product-name">West Coast IPA - All-Grain Kit</h1>
+          <div class="price-section">
+            <span class="price-tag">for 5 Gallons</span>
+            <p class="product-price">$60.00</p>
+          </div>
+        </div>
+        <div class="product-description">
+          <p>Brew a craft brewing classic with our "West Coast IPA - All-Grain Kit"! This kit contains all the necessary ingredients to create a bright, bitter, and incredibly aromatic IPA in the style of the US West Coast.</p>
+          <p>We've selected the perfect combination of malts to achieve a clean, dry body that serves as an excellent base for a hop explosion. The kit includes a powerful combination of Centennial, Simcoe, and Columbus hops, which provide a burst of citrus, pine, and resinous notes characteristic of this style.</p>
+          <p>This kit is your ticket to the world of true West Coast IPA. It comes with detailed step-by-step instructions to guide you through every stage, from mashing to bottling.</p>
+        </div>
+        <div class="cart-controls">
+          <button class="button button--primary add-to-cart-button" id="add-to-cart-btn">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Add to Cart</span>
+          </button>
+          <div class="quantity-counter is-hidden" id="quantity-counter">
+            <button class="quantity-btn" data-action="decrease" aria-label="Decrease quantity"><i class="fa-solid fa-minus"></i></button>
+            <span class="quantity-value">1 in cart</span>
+            <button class="quantity-btn" data-action="increase" aria-label="Increase quantity"><i class="fa-solid fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Specifications Accordion -->
+    <section class="accordion-section">
+      <div class="accordion-item">
+        <div class="accordion-title">
+          <h3>Kit Specifications</h3>
+          <i class="fa-solid fa-chevron-down accordion-icon"></i>
+        </div>
+        <div class="accordion-content">
+          <ul>
+            <li><strong>Kit Type:</strong> All-Grain</li>
+            <li><strong>Batch Size:</strong> 5 Gallons (19 Liters)</li>
+            <li><strong>Estimated OG:</strong> 1.065</li>
+            <li><strong>Estimated FG:</strong> 1.012</li>
+            <li><strong>Estimated ABV:</strong> 6.9%</li>
+            <li><strong>IBU:</strong> 65</li>
+            <li><strong>Included Ingredients:</strong>
+              <ul>
+                <li>12 lbs Maris Otter Pale Malt</li>
+                <li>1 lb Caramel Malt 40L</li>
+                <li>0.5 lb Dextrin Malt</li>
+                <li>1 oz Columbus Hops (60 min)</li>
+                <li>1 oz Simcoe Hops (15 min)</li>
+                <li>1 oz Centennial Hops (5 min)</li>
+                <li>2 oz Centennial Hops (Dry Hop)</li>
+                <li>1 pack SafAle US-05 Dry Ale Yeast</li>
+                <li>Whirlfloc Tablet, Priming Sugar, Step-by-step Instructions</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Reviews Section -->
+    <section class="reviews-section">
+      <h2 class="reviews-title">Latest reviews</h2>
+      <div class="reviews-grid">
+        <!-- Review Card 1 -->
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="review-body">
+            <h4 class="review-heading">Authentic West Coast Flavor!</h4>
+            <p class="review-text">This kit is the bomb! The beer turned out exactly how I love it: bitter, aromatic, with a powerful pine-citrus profile. The instructions are very clear. Will definitely buy again.</p>
+          </div>
+          <div class="review-author">
+            <img src="../../static/img/avatars/avatar9.svg" alt="User avatar" class="author-avatar">
+            <span class="author-name">IPA_Lover_82</span>
+          </div>
+        </div>
+        <!-- Review Card 2 -->
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="review-body">
+            <h4 class="review-heading">Great Value and Quality</h4>
+            <p class="review-text">Excellent value for money. All ingredients are fresh, the malt is well-milled, and the hops are aromatic. Ended up with 5 gallons of excellent IPA. Much easier than sourcing everything separately.</p>
+          </div>
+          <div class="review-author">
+            <img src="../../static/img/avatars/avatar10.svg" alt="User avatar" class="author-avatar">
+            <span class="author-name">FrugalBrewer</span>
+          </div>
+        </div>
+        <!-- Review Card 3 -->
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+          </div>
+          <div class="review-body">
+            <h4 class="review-heading">Awesome, but bitter!</h4>
+            <p class="review-text">The kit is super, but be prepared for the bitterness! This is a real West Coast IPA, not a modern "smoothie". If you love the classics, you'll enjoy it. I might reduce the 60-minute hop addition slightly, but that's a matter of taste.</p>
+          </div>
+          <div class="review-author">
+            <img src="../../static/img/avatars/avatar1.svg" alt="User avatar" class="author-avatar">
+            <span class="author-name">SweetToothHomebrew</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <img src="../../static/img/background/image-footer.svg" alt="Hop & Barley Hops Logo" class="footer__hops-logo">
+  <nav class="footer__nav">
+    <ul>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="#">Community</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">License</a></li>
+    </ul>
+  </nav>
+  <p class="footer__copyright">© Hop & Barley 2025. All rights reserved</p>
+</footer>
+
+<!-- JS -->
+<script src="../../static/js/main.js"></script>
+</body>
+</html>

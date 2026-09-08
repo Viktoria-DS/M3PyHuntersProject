@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Hop & Barley</title>
+
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../../static/css/main.css">
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="header-container">
+        <a href="home.html" class="header__logo">
+            <img src="../../static/img/logo.svg" alt="Hop & Barley Logo">
+            <p class="logo-text">Hop & Barley</p>
+        </a>
+        <nav class="header__nav">
+            <ul>
+                <li><a href="home.html">Products</a></li>
+                <li><a href="guides-recipes.html">Guides & Recipes</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Resources</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header__auth-buttons" id="auth-guest">
+            <a href="login.html" class="button button--secondary">Sign in</a>
+            <a href="register.html" class="button button--primary">Register</a>
+        </div>
+        <div class="header__user-actions" id="auth-user">
+            <a href="account.html" class="user-icon" aria-label="My Account">
+                <img src="../../static/img/icons/User_alt.svg" alt="User Account">
+            </a>
+            <a href="cart.html" class="cart-icon" aria-label="Shopping Cart">
+                <img src="../../static/img/icons/Shopping_bag.svg" alt="Shopping Cart">
+            </a>
+
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="checkout-page-wrapper">
+    <div class="checkout-container">
+        <h1 class="checkout-title">Order Details</h1>
+
+        <form id="checkout-form">
+            <!-- Shipping Information -->
+            <section class="checkout-section">
+                <h2 class="checkout-section__title">Shipping information</h2>
+                <div class="checkout-form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full_name" class="Input" placeholder="Value"  required>
+                </div>
+                <div class="checkout-form-group">
+                    <label for="phone">Phone number</label>
+                    <input type="tel" id="phone" name="phone" class="Input" placeholder="Value" required>
+                </div>
+                <div class="checkout-form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" class="Input" placeholder="Value" required>
+                </div>
+                <div class="checkout-form-group">
+                    <label for="address">Shipping address</label>
+                    <textarea id="address" name="address" class="Textarea" placeholder="Value" rows="3" required></textarea>
+                </div>
+            </section>
+
+            <!-- Payment Method -->
+            <section class="checkout-section">
+                <h2 class="checkout-section__title">Payment Method</h2>
+                <div class="payment-options">
+                    <label class="radio-option">
+                        <input type="radio" name="payment_method" value="debit" checked>
+                        <span class="radio-custom"></span>
+                        <span class="radio-label">Debit Card</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="payment_method" value="wallet">
+                        <span class="radio-custom"></span>
+                        <span class="radio-label">Digital Wallet</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="payment_method" value="cod">
+                        <span class="radio-custom"></span>
+                        <span class="radio-label">Cash On Delivery</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Order Summary -->
+            <section class="checkout-summary">
+                <h2 class="checkout-section__title">Order Summary</h2>
+                <div class="summary-details">
+                    <div class="summary-total">
+                        <p>Total</p>
+                        <p>$32.95</p>
+                    </div>
+                    <button type="submit" class="button button--primary button--pay">Pay</button>
+                </div>
+            </section>
+        </form>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <img src="../../static/img/background/image-footer.svg" alt="Hop & Barley Hops Logo" class="footer__hops-logo">
+    <nav class="footer__nav">
+        <ul>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">License</a></li>
+        </ul>
+    </nav>
+    <p class="footer__copyright">© Hop & Barley 2025. All rights reserved</p>
+</footer>
+
+<!-- JS -->
+<script src="../../static/js/main.js"></script>
+</body>
+</html>
