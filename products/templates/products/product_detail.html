@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{product.name}} | Hop & Barley
+{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+<main class="page-product">
+  <div class="container">
+    <!-- Product Info Section -->
+    <section class="product-details-section">
+      <div class="product-image-container">
+        <img src="{{product.image.url}}" alt="Citra Hops" class="product-image">
+      </div>
+      <div class="product-info-column">
+        <div class="product-title-price">
+          <h1 class="product-name">{{product.name}}</h1>
+          <div class="price-section">
+            <span class="price-tag">per 100g</span>
+            <p class="product-price">{{product.price}}</p>
+          </div>
+        </div>
+        <div class="product-description">
+            {{product.description}}
+        </div>
+        <!-- Container for managing the cart -->
+        <div class="cart-controls">
+          <!-- Add to Cart button (visible by default) -->
+          <button class="button button--primary add-to-cart-button" id="add-to-cart-btn">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Add to Cart</span>
+          </button>
+
+          <!-- Quantity counter (hidden by default) -->
+          <div class="quantity-counter is-hidden" id="quantity-counter">
+            <button class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <span class="quantity-value">1 in cart</span>
+            <button class="quantity-btn" data-action="increase" aria-label="Increase quantity">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Specifications Accordion -->
+    <section class="accordion-section">
+      <div class="accordion-item">
+        <div class="accordion-title">
+          <h3>Technical Specifications</h3>
+          <i class="fa-solid fa-chevron-down accordion-icon"></i>
+        </div>
+        <div class="accordion-content">
+          <ul>
+            <li><strong>Origin:</strong> USA</li>
+            <li><strong>Type:</strong> Aroma (Dual-Purpose)</li>
+            <li><strong>Alpha Acids:</strong> 11.0% - 13.0%</li>
+            <li><strong>Beta Acids:</strong> 3.0% - 4.5%</li>
+            <li><strong>Aroma Profile:</strong> Grapefruit, Lime, Passion Fruit, Lychee, Melon</li>
+            <li><strong>Usage:</strong> Late Kettle Addition, Dry Hopping</li>
+            <li><strong>Recommended Beer Styles:</strong> IPA, Double IPA, Pale Ale, American Wheat</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Reviews Section -->
+    <section class="reviews-section">
+      <h2 class="reviews-title">Latest reviews</h2>
+      <div class="reviews-grid">
+        <!-- Review Card 1 -->
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="review-body">
+            <h4 class="review-heading">Explosive Citrus Aroma!</h4>
+            <p class="review-text">Used Citra for my latest NEIPA, and the aroma is absolutely incredible. Poured hazy, with intense notes of grapefruit and passion fruit. A must-have for any hop-forward beer!</p>
+          </div>
+          <div class="review-author">
+            <img src="../../static/img/avatars/avatar1.svg" alt="User avatar" class="author-avatar">
+            <span class="author-name">Homebrewer_27</span>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="review-body">
+            <h4 class="review-heading">Great for Beginners</h4>
+            <p class="review-text">When I was just starting to brew, this was the yeast recommended to me, and I have no regrets. It's very forgiving with temperature and handles many beginner mistakes.</p>
+          </div>
+          <div class="review-author">
+            <img src="../../static/img/avatars/avatar8.svg" alt="User avatar" class="author-avatar">
+            <span class="author-name">Homebr</span>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="review-body">
+            <h4 class="review-heading">Perfect  Citrus!</h4>
+            <p class="review-text">The beer always turns out great. A must-have for any hop-forward beer!</p>
+          </div>
+          <div class="review-author">
+            <img src="../../static/img/avatars/avatar2.svg" alt="User avatar" class="author-avatar">
+            <span class="author-name">r_27</span>
+          </div>
+        </div>
+          {% for review in product.reviews.all %}
+          <div class="review-card">
+          <div class="review-rating">
+              {% for i in review.get_stars %}
+                <i class="fa-solid fa-star"></i>
+              {%endfor%}
+               {% for i in review.get_empty_stars%}
+              <i class="fa-regular fa-star"></i>
+              {%endfor%}
+
+          </div>
+          <div class="review-body">
+              {% if review.heading %}
+            <h4 class="review-heading">{% if review.heading %}</h4>
+              {% endif %}
+              {% if review.comments %}
+            <p class="review-text">{% if review.comments %}</p>
+              {% endif %}
+          </div>
+          <div class="review-author">
+            <img src="{{review.owner.image.url}}" alt="User avatar" class="author-avatar">
+            <span class="author-name">{{review.owner.username}}</span>
+          </div>
+        </div>
+          {%endfor%}
+      </div>
+    </section>
+  </div>
+</main>
+{% endblock %}
