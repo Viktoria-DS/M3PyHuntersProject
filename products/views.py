@@ -1,19 +1,16 @@
 import logging
-
-from django.db.models import Q, QuerySet
-from django.db.models.aggregates import Avg
-from django.shortcuts import render
+from django.db.models import Q, QuerySet, Avg
 from django.views.generic import ListView, TemplateView, DetailView
 
+from orders.cart import Cart
 from products.models import Product, Category
 
 
-# Create your views here.
-class ProductListView(ListView):
+class ProductList(ListView):
     model = Product
     template_name = 'products/product_list.html'
     context_object_name = 'products'
-    paginate_by = 5
+    paginate_by = 6
     ordering = ['-created_at']
 
     queryset = (Product.objects.all()
@@ -58,18 +55,20 @@ class ProductListView(ListView):
             q = q.order_by(sorting)
         return q
 
+
 class GuidesRecipesView(TemplateView):
     template_name = 'products/guides_recipes.html'
 
-class ProductDetailView(DetailView):
+
+class ProductDetailsView(DetailView):
     template_name = 'products/product_detail.html'
     queryset = (Product.objects.all()
                 .select_related('category')
                 .prefetch_related('reviews'))
 
-
     def get_context_data(self, **kwargs):
-        product = Product.objects.get(slug=self.kwargs['slug'])
         context = super().get_context_data(**kwargs)
-        context['product'] = product
+        cart = Cart(self.request)
+        context['cart'] = cart.get_summary
+        context['product_in_cart'] = cart.get_quantity(self.object)
         return context

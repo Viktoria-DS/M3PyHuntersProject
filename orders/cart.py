@@ -31,12 +31,12 @@ class Cart:
         self.session[Cart.CART_SESSION_KEY] = self.data
         self.session.modified = True
 
-    def set_quantity(self, product: Product, quantity: int):
+    def __setitem__(self, product: Product, quantity: int):
         self.data[str(product.pk)] = quantity
         self.save()
 
     def add(self, product: Product, quantity: int):
-        self.set_quantity(product, quantity + self.get_quantity(product))
+        self[product] = quantity + self[product]
         self.save()
 
     def remove(self, product: Product):
@@ -56,7 +56,7 @@ class Cart:
             for p, q in self.data.items()
         ]
 
-    def get_quantity(self, product: Product):
+    def __getitem__(self, product: Product):
         return self.data.get(str(product.pk), 0)
 
     @property

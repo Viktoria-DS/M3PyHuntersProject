@@ -4,6 +4,8 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.db.models import F, Sum
 
+from products.models import Product
+
 
 class OrderStatus(models.TextChoices):
     PENDING = 'pending'
@@ -53,7 +55,8 @@ class Order(models.Model):
                           .get(pk=self.pk))
         if self.status == current_status:
             return
-        if self.status not in self.STATUS_TRANSITIONS.get(current_status, set()):
+        if self.status not in self.STATUS_TRANSITIONS.get(current_status,
+                                                          set()):
             raise ValidationError({
                 'status': f'Cannot change status from {current_status} to {self.status}.',
             })
@@ -91,6 +94,14 @@ class OrderItem(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
+        if self.product.stock < self.quantity:
+            raise ValidationError('Not enough stock available')
+        Product.objects.filter(
+            id=self.product.id, stock__gte=self.quantity
+        ).update(
+            stock=F("stock") - self.quantity
+        )
+
         super().save(*args, **kwargs)
         self.order.update_total_price()
 

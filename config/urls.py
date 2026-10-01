@@ -22,7 +22,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from products.views import ProductListView
+from products.views import ProductList
 
 APPS_URLS = [
     path('admin/', admin.site.urls),
@@ -31,7 +31,7 @@ APPS_URLS = [
     path('products/', include('products.urls', namespace = 'products')),
     path('reviews/', include('reviews.urls', namespace = 'reviews')),
     path('shop/', include('shop.urls', namespace = 'shop')),
-    path('', ProductListView.as_view(), name='product-list_main'),
+    path('', ProductList.as_view(), name='product-list_main'),
     path('users/', include('users.urls', namespace = 'users')),
 
 ]
