@@ -30,6 +30,7 @@ class Product(models.Model):
     description = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name='products')
     price = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(0.0)])
+    specifications = models.JSONField(default=dict, blank=True, null=True)
     image = models.ImageField(upload_to='products/')
     is_active = models.BooleanField(default=True)
     stock = models.IntegerField(default=0, validators=[MinValueValidator(0)])

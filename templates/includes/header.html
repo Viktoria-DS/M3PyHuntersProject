@@ -16,21 +16,26 @@
             </ul>
         </nav>
 
-        <!-- Block for unauthorized user -->
-        <div class="header__auth-buttons" id="auth-guest">
-            <a href="#" class="button button--secondary">Sign in</a>
-            <a href="#" class="button button--primary">Register</a>
-        </div>
-
-        <!-- Block for authorized user -->
+         {% if user.is_authenticated %}
         <div class="header__user-actions" id="auth-user">
-            <a href="#" class="user-icon" aria-label="My Account">
+            <a href="{% url 'users:account' %}" class="user-icon" aria-label="My Account">
                 <img src="{% static 'img/icons/User_alt.svg' %}" alt="User Account">
             </a>
-            <a href="#" class="cart-icon" aria-label="Shopping Cart">
+            <a href="{% url 'orders:cart' %}" class="cart-icon" aria-label="Shopping Cart">
                 <img src="{% static 'img/icons/Shopping_bag.svg' %}" alt="Shopping Cart">
             </a>
-
+            <form method="POST" action="{% url 'users:logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="fa fa-sign-out" aria-hidden="true"></button>
+            </form>
         </div>
+        {% else %}
+        <div class="header__auth-buttons" id="auth-guest">
+            <a href="{% url 'users:login' %}" class="button button--secondary">Sign in</a>
+            <a href="{% url 'users:register' %}" class="button button--primary">Register</a>
+        </div>
+        {% endif %}
+
+
     </div>
 </header>

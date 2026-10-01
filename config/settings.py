@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/6.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
+import logging
 import os
 from pathlib import Path
 
@@ -51,6 +52,7 @@ SYSTEM_APPS = [
 ADDITIONAL_APPS = []
 
 PROJECT_APPS = [
+    'users',
     'orders',
     'reviews',
     'products',
@@ -144,3 +146,13 @@ MAILERS = {
     },
 }
 SITE_NAME = 'PyBlog'
+
+LOG_LEVEL = logging.DEBUG if DEBUG else logging.INFO
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s - %(levelname)s - %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    handlers=[logging.StreamHandler()]
+                    )
+
+AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = '/'

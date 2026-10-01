@@ -1,0 +1,19 @@
+<div class="pagination">
+    <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}" class="pagination__link pagination__link--prev"
+        {% if not page_obj.has_previous %}aria-disabled="true"{% endif %}
+        class="pagination__link pagination__link--prev">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Previous</span>
+    </a>
+    <div class="pagination-list">
+        {% for page in page_obj.paginator.page_range %}
+        <a href="?page={{ page }}" class="pagination__link {% if page == page_obj.number %} active {% endif %}">{{page}}</a>
+        {% endfor %}
+    </div>
+ <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% endif %}"
+       {% if not page_obj.has_next %}aria-disabled="true"{% endif %}
+       class="pagination__link pagination__link--prev">
+        <i class="fa-solid fa-arrow-right"></i>
+        <span>Next</span>
+    </a>
+</div>

@@ -32,6 +32,7 @@ APPS_URLS = [
     path('reviews/', include('reviews.urls', namespace = 'reviews')),
     path('shop/', include('shop.urls', namespace = 'shop')),
     path('', ProductListView.as_view(), name='product-list_main'),
+    path('users/', include('users.urls', namespace = 'users')),
 
 ]
 MEDIA_URLS = [

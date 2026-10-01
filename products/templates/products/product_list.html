@@ -20,43 +20,40 @@
             </div>
 
             <div class="sidebar__section">
-                <h3 class="section-title">Product Type</h3>
+                <h3 class="section-title">Categories</h3>
                 <div class="checkbox-group">
-                    <label class="checkbox-container">Hops
-                        <input type="checkbox" data-keyword="Hops">
+                    {% for cat in categories %}
+                    <label class="checkbox-container">{{ cat.name }}
+                        <input type="checkbox" name="categories" value="{{ cat.slug }}" data-keyword="{{ cat.slug }}" data-label="{{ cat.name }}">
                         <span class="checkmark"></span>
                     </label>
-                    <label class="checkbox-container">Malts
-                        <input type="checkbox" data-keyword="Malts">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox-container">Yeast
-                        <input type="checkbox" data-keyword="Yeast">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="checkbox-container">Adjuncts
-                        <input type="checkbox" data-keyword="Adjuncts">
-                        <span class="checkmark"></span>
-                    </label>
+                    {% endfor %}
                 </div>
             </div>
         </aside>
 
         <section class="products-area product-grid-section">
             <div class="search-sort-bar">
-                <div class="search-input-wrapper">
-                    <input type="text" placeholder="Search" class="search-input">
-                    <button class="search-button" aria-label="Search">
+                <form method="get" class="search-input-wrapper" id="product-search-form" role="search">
+                    {% for key, values in request.GET.lists %}
+                        {% if key != 'search' and key != 'page' %}
+                            {% for value in values %}
+                                <input type="hidden" name="{{ key }}" value="{{ value }}">
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                    <input type="search" name="search" value="{{ request.GET.search|default:'' }}" placeholder="Search" class="search-input" aria-label="Search products">
+                    <button type="submit" class="search-button" aria-label="Search">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                </div>
+                </form>
                 <div class="sort-options">
-                    <button class="sort-button active-sort">
+                    <button type="button" class="sort-button" data-sorting="-created_at">
                         <span>New</span>
                     </button>
-                    <button class="sort-button">Price ascending</button>
-                    <button class="sort-button">Price descending</button>
-                    <button class="sort-button">Rating</button>
+                    <button type="button" class="sort-button" data-sorting="price">Price ascending</button>
+                    <button type="button" class="sort-button" data-sorting="-price">Price descending</button>
+                    <button type="button" class="sort-button" data-sorting="-rating">Rating</button>
                 </div>
             </div>
 
@@ -68,30 +65,17 @@
                         <div class="product-card__info">
                             <h4 class="product-card__name">{{ p.name }}</h4>
                             <p class="product-card__price">${{ p.price }}</p>
-                            <p class="product-card__description">{{ p.description }}</p>
+                            <p class="product-card__description">{{ p.description | truncatewords:15 }}</p>
                         </div>
                     </div>
                 </a>
                 {% endfor %}
             </div>
-
-            <div class="pagination">
-                <a href="#" class="pagination__link pagination__link--prev">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <span>Previous</span>
-                </a>
-                <div class="pagination-list">
-                    <a href="#" class="pagination__link active">1</a>
-                    <a href="#" class="pagination__link">2</a>
-                    <a href="#" class="pagination__link">3</a>
-                    <span class="pagination__dots">...</span>
-                    <a href="#" class="pagination__link">20</a>
-                </div>
-                <a href="#" class="pagination__link pagination__link--next">
-                    <span>Next</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </a>
-            </div>
+            {% if products %}
+            {% include 'includes/pagination.html' %}
+            {% else %}
+            <p>No products found</p>
+            {% endif %}
         </section>
     </div>
 {% endblock %}
