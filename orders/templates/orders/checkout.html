@@ -1,68 +1,72 @@
 {% extends 'base.html' %}
-
-{% block title %}
-Cart | Hop & Barley
-{% endblock %}
-
-
+{% load static %}
+{% block title %}Checkout | Hop & Barley{% endblock %}
 
 {% block content %}
-<!-- Main Content -->
-<main class="cart-page-wrapper">
-  <div class="cart-container">
-    <h1 class="cart-title">Shopping Cart</h1>
+<main class="checkout-page-wrapper">
+    <div class="checkout-container">
+        <h1 class="checkout-title">Order Details</h1>
 
-    <div class="cart-items-list" id="cart-items-list">
-      {% for product in cart.get_summary.products %}
-      <div class="cart-item">
-        <a href="{% url 'products:product_details' product.product.slug %}">
-            <img src="{{ product.product.image.url }}" alt="{{ product.product.name }}" class="cart-item__image">
-        </a>
-        <div class="cart-item__body">
-          <div class="cart-item__details">
-            <h2 class="cart-item__name">{{ product.product.name }}</h2>
-            <div class="cart-item__price-info">
-              <p class="cart-item__price" >
-                ${{ product.position_price }}
-              </p>
-              <span class="cart-item__price-tag">per 100g</span>
-            </div>
-          </div>
-          <div class="cart-item__actions">
-            <div class="cart-item__quantity-selector">
-              <button class="quantity-btn-cart" data-action="decrease"><i class="fa-solid fa-minus"></i></button>
-              <span class="quantity-value-cart">{{ product.quantity }}</span>
-              <button class="quantity-btn-cart" data-action="increase"><i class="fa-solid fa-plus"></i></button>
-            </div>
-              <form method="POST" action="{% url 'orders:cart_remove'%}">
-                  {% csrf_token %}
-                  <input type="hidden" name="next" value="{{ request.get_full_path }}">
-                  <input type="hidden" name="product_slug" value="{{ product.product.slug }}">
-                <button type="submit" class="button--remove">
-                  Remove <i class="fa-solid fa-xmark"></i>
-                </button>
-              </form>
-          </div>
-        </div>
-      </div>
-      {% empty %}
-        <p>Your cart is empty.</p>
-      {% endfor %}
+        <form id="checkout-form" method="POST" action="{% url 'orders:checkout' %}">
+            {% csrf_token %}
+            <section class="checkout-section">
+                <h2 class="checkout-section__title">Shipping information</h2>
+                <div class="checkout-form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full_name" class="Input" value="{{ request.user.full_name }}" required>
+                </div>
+                <div class="checkout-form-group">
+                    <label for="phone">Phone number</label>
+                    <input type="tel" id="phone" name="phone" class="Input"
+                           {% if request.user.phone %}value="{{ request.user.phone }}" {% endif %}
+                           placeholder="8 (800) 5553535" required>
+                </div>
+                <div class="checkout-form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" class="Input" placeholder="Tbilisi"
+                           {% if request.user.city %}value="{{ request.user.city }}" {% endif %}
+                           required>
+                </div>
+                <div class="checkout-form-group">
+                    <label for="address">Shipping address</label>
+                    <textarea id="address" name="shipping_address" class="Textarea" value="{{ request.user.address }}" rows="3" required></textarea>
+                </div>
+            </section>
 
+            <!-- Payment Method -->
+            <section class="checkout-section">
+                <h2 class="checkout-section__title">Payment Method</h2>
+                <div class="payment-options">
+                    <label class="radio-option">
+                        <input type="radio" name="payment_method" value="debit" checked>
+                        <span class="radio-custom"></span>
+                        <span class="radio-label">Debit Card</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="payment_method" value="wallet">
+                        <span class="radio-custom"></span>
+                        <span class="radio-label">Digital Wallet</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="payment_method" value="cod">
+                        <span class="radio-custom"></span>
+                        <span class="radio-label">Cash On Delivery</span>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Order Summary -->
+            <section class="checkout-summary">
+                <h2 class="checkout-section__title">Order Summary</h2>
+                <div class="summary-details">
+                    <div class="summary-total">
+                        <p>Total</p>
+                        <p>${{ cart.total }}</p>
+                    </div>
+                    <button type="submit" class="button button--primary button--pay">Pay</button>
+                </div>
+            </section>
+        </form>
     </div>
-    {% if cart.data %}
-    <div class="cart-summary">
-      <div class="cart-summary__total">
-        <p>Total</p>
-        <p id="cart-total-price">${{ cart.get_summary.total }}</p>
-      </div>
-      <a href="{% url 'orders:checkout' %}" class="button button--primary button--checkout">Proceed to Checkout</a>
-    </div>
-     {% else %}
-      <div class="cart-summary">
-       <a href="{% url 'products:product_list' %}" class="button button--primary button--checkout">Go to shopping</a>
-      </div>
-     {% endif %}
-  </div>
 </main>
 {% endblock %}

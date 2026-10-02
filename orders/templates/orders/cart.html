@@ -54,9 +54,9 @@ Cart | Hop & Barley
     <div class="cart-summary">
       <div class="cart-summary__total">
         <p>Total</p>
-        <p id="cart-total-price">${{ cart.total }}</p>
+        <p id="cart-total-price">${{ cart.get_summary.total }}</p>
       </div>
-      <a href="#" class="button button--primary button--checkout">Proceed to Checkout</a>
+      <a href="{% url 'orders:checkout' %}" class="button button--primary button--checkout">Proceed to Checkout</a>
     </div>
      {% else %}
       <div class="cart-summary">

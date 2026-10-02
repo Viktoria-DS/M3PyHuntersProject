@@ -70,5 +70,5 @@ class ProductDetailsView(DetailView):
         context = super().get_context_data(**kwargs)
         cart = Cart(self.request)
         context['cart'] = cart.get_summary
-        context['product_in_cart'] = cart.get_quantity(self.object)
+        context['product_in_cart'] = [self.object]
         return context
