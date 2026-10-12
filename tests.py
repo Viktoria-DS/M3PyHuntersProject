@@ -460,7 +460,7 @@ def test_cart_add_update_remove_and_availability(client, product):
 
     response = client.get(reverse('orders:cart'))
     assert response.status_code == 200
-    assert response.context['cart'].get_summary['total'] == Decimal('30.00')
+    assert response.context['cart']['total'] == Decimal('30.00')
 
     response = add_to_cart(client, product, quantity=8)
     assert client.session['cart'] == {str(product.pk): 3}

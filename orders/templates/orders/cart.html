@@ -12,7 +12,7 @@ Cart | Hop & Barley
         <h1 class="cart-title">Shopping Cart</h1>
 
         <div class="cart-items-list" id="cart-items-list">
-            {% for product in cart.get_summary.products %}
+            {% for product in cart.products %}
             <div class="cart-item">
                 <a href="{% url 'products:product_details' product.product.slug %}">
                     <img src="{{ product.product.image.url }}" alt="{{ product.product.name }}"
@@ -70,11 +70,11 @@ Cart | Hop & Barley
             {% endfor %}
 
         </div>
-        {% if cart.data %}
+        {% if cart.products %}
         <div class="cart-summary">
             <div class="cart-summary__total">
                 <p>Total</p>
-                <p id="cart-total-price">${{ cart.get_summary.total }}</p>
+                <p id="cart-total-price">${{ cart.total }}</p>
             </div>
             <a href="{% url 'orders:checkout' %}" class="button button--primary button--checkout">Proceed to
                 Checkout</a>

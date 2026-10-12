@@ -1,9 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction, IntegrityError
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
-from django.views import View
 from django.views.generic import CreateView
 
 from orders.models import OrderItem, OrderStatus

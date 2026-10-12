@@ -9,7 +9,7 @@ from django.views.generic import TemplateView, DetailView
 from orders.cart import Cart
 from orders.choices import PAYMENT_METHOD_CHOICES
 from orders.forms import CheckoutForm, CartQuantityForm
-from orders.models import OrderItem, Order
+from orders.models import Order
 from orders.services import create_order, cancel_order
 from products.models import Product
 from django.contrib import messages
@@ -32,7 +32,7 @@ class CartView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['cart'] = Cart(self.request)
+        context['cart'] = Cart(self.request).get_summary
         return context
 
 
