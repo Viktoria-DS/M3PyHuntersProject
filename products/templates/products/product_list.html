@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Каталог товаров | Hop & Barley
+{% endblock %}
+
+{% block content %}
+<section class="hero-banner">
+    <img src="{% static 'img/background/hopfen-fields.jpg' %}" alt="Beautiful hops on a dark background"
+         class="hero-banner__image">
+    <div class="hero-banner__overlay"></div>
+</section>
+
+<div class="container main-content-grid">
+    <aside class="sidebar filter-menu">
+        <div class="sidebar__section">
+            <h3 class="section-title">Keywords</h3>
+            <div class="keywords-list">
+            </div>
+        </div>
+
+        <div class="sidebar__section">
+            <h3 class="section-title">Categories</h3>
+            <div class="checkbox-group">
+                {% for cat in categories %}
+                <label class="checkbox-container">{{ cat.name }}
+                    <input type="checkbox" name="categories" value="{{ cat.slug }}" data-keyword="{{ cat.slug }}"
+                           data-label="{{ cat.name }}">
+                    <span class="checkmark"></span>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="sidebar__section">
+            <h3 class="section-title">Price range</h3>
+
+            <form method="get">
+                {% for key, values in request.GET.lists %}
+                {% if key != 'min_price' and key != 'max_price' and key != 'page' %}
+                {% for value in values %}
+                <input type="hidden" name="{{ key }}" value="{{ value }}">
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+
+                {{ price_form.non_field_errors }}
+
+                <label for="min-price">Minimum price</label>
+                <input
+                        type="number"
+                        id="min-price"
+                        name="min_price"
+                        class="Input"
+                        min="0"
+                        step="0.01"
+                        value="{{ price_form.min_price.value|default_if_none:'' }}"
+                >
+                {{ price_form.min_price.errors }}
+
+                <label for="max-price">Maximum price</label>
+                <input
+                        type="number"
+                        id="max-price"
+                        name="max_price"
+                        class="Input"
+                        min="0"
+                        step="0.01"
+                        value="{{ price_form.max_price.value|default_if_none:'' }}"
+                >
+                {{ price_form.max_price.errors }}
+
+                <button type="submit" class="button button--primary">
+                    Apply
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    <section class="products-area product-grid-section">
+        <div class="search-sort-bar">
+            <form method="get" class="search-input-wrapper" id="product-search-form" role="search">
+                {% for key, values in request.GET.lists %}
+                {% if key != 'search' and key != 'page' %}
+                {% for value in values %}
+                <input type="hidden" name="{{ key }}" value="{{ value }}">
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+                <input type="search" name="search" value="{{ request.GET.search|default:'' }}" placeholder="Search"
+                       class="search-input" aria-label="Search products">
+                <button type="submit" class="search-button" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+            <div class="sort-options">
+                <button type="button" class="sort-button" data-sorting="-created_at">
+                    <span>New</span>
+                </button>
+                <button type="button" class="sort-button" data-sorting="price">Price ascending</button>
+                <button type="button" class="sort-button" data-sorting="-price">Price descending</button>
+                <button type="button" class="sort-button" data-sorting="-popularity"> Popularity</button>
+                <button type="button" class="sort-button" data-sorting="-rating">Rating</button>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            {% for p in products %}
+            <a href="{{ p.get_absolute_url }}" class="product-card-link">
+                <div class="product-card">
+                    <img src="{{ p.image.url }}" alt="Citra Hops" class="product-card__image">
+                    <div class="product-card__info">
+                        <h4 class="product-card__name">{{ p.name }}</h4>
+                        <p class="product-card__price">${{ p.price }}</p>
+                        <p class="product-card__description">{{ p.description | truncatewords:15 }}</p>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% if products %}
+        {% include 'includes/pagination.html' %}
+        {% else %}
+        <p>No products found</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

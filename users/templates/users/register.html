@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+<main class="auth-page-wrapper">
+    <div class="auth-background">
+        <img src="{% static 'img/background/pattern.jpg' %}" alt="Background pattern">
+    </div>
+    <div class="auth-form-container">
+        <div class="auth-container auth-container--register">
+            <div class="Legend">
+                <h1 class="auth-title">Register</h1>
+            </div>
+
+            <form class="auth-form" id="register-form" method="post" action="{% url 'users:register' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div style="color: red;">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+                {% for field in form %}
+                    <div class="InputField">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                    {% if field.errors %}
+                        <div style="color: red;">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+<!--                <div class="CheckboxField">-->
+<!--                    <label class="checkbox-container">Remember me-->
+<!--                        <input type="checkbox" checked>-->
+<!--                        <span class="checkmark"></span>-->
+<!--                    </label>-->
+<!--                </div>-->
+
+                <div class="ButtonGroup">
+                    <button type="submit" class="button button--primary">Register</button>
+                </div>
+            </form>
+
+            <p class="auth-switch">Already have an account? <a href="{% url 'users:login' %}">Sign in</a></p>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

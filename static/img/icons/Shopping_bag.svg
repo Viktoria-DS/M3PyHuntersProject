@@ -1,0 +1,14 @@
+<svg width="38.000000" height="38.000000" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip8_2023">
+			<rect id="Shopping bag" rx="0.000000" width="37.000000" height="37.000000" transform="translate(0.500000 0.500000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<rect id="Shopping bag" rx="0.000000" width="37.000000" height="37.000000" transform="translate(0.500000 0.500000)" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip8_2023)">
+		<path id="Icon" d="M4.75 9.49L4.75 31.66C4.75 32.5 5.08 33.31 5.67 33.9C6.27 34.49 7.07 34.83 7.91 34.83L30.08 34.83C30.92 34.83 31.72 34.49 32.32 33.9C32.91 33.31 33.25 32.5 33.25 31.66L33.25 9.49L28.5 3.16L9.5 3.16L4.75 9.49ZM4.75 9.49L33.25 9.49M25.33 15.83C25.33 17.51 24.66 19.12 23.47 20.31C22.29 21.49 20.67 22.16 19 22.16C17.32 22.16 15.7 21.49 14.52 20.31C13.33 19.12 12.66 17.51 12.66 15.83" stroke="#1E1E1E" stroke-opacity="1.000000" stroke-width="3.500000" stroke-linejoin="round" stroke-linecap="round"/>
+	</g>
+</svg>

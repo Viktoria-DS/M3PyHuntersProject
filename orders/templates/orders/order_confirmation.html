@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container py-4">
+    <h1>Order #{{ order.pk }} received</h1>
+
+    <p>Status: {{ order.get_status_display }}</p>
+    <p>Payment method: {{ payment_method_label }}</p>
+
+    <h2>Delivery address</h2>
+    <p>{{ order.shipping_address|linebreaksbr }}</p>
+
+    <h2>Items</h2>
+    <ul>
+        {% for item in order.items.all %}
+            <li>
+                {{ item.product.name }}
+                — Quantity: {{ item.quantity }}
+                — Unit price: ${{ item.price }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p><strong>Total: ${{ order.total_price }}</strong></p>
+
+    <a href="{% url 'users:account' %}">
+        View my orders
+    </a>
+</section>
+{% endblock %}

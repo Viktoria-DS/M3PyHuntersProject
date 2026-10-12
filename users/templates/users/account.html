@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Account | Hop & Barley{% endblock %}
+
+
+{% block content %}
+<!-- Main Content -->
+<main class="account-page-wrapper">
+    <div class="account-container">
+        <!-- Tabs Navigation -->
+        <div class="account-tabs">
+            <button class="account-tab active" data-tab-target="#order-history">Order History</button>
+            <button class="account-tab" data-tab-target="#account-info">Account Information</button>
+        </div>
+
+        <div class="tab-content">
+            <div id="order-history" class="tab-pane active">
+                {% if orders %}
+
+                <div class="order-history-table">
+                    <!-- Table Header -->
+                    <div class="order-table-header">
+                        <div class="order-table-cell">Order Details</div>
+                        <div class="order-table-cell">Order Status</div>
+                        <div class="order-table-cell">Total</div>
+                    </div>
+                    <!-- Table Body -->
+                    <div class="order-table-body">
+                        {% for order in orders %}
+                        <div class="order-table-row">
+                            <div class="order-table-cell">
+                                <a
+                                        class="order-id"
+                                        href="{% url 'orders:order_confirmation' order.pk %}"
+                                >
+                                    #{{ order.pk }}
+                                </a>
+                                <span class="order-date">{{order.created_at|date:"d M Y"}}</span>
+                            </div>
+                            <div class="order-table-cell">
+  <span class="order-status">
+    {{ order.get_status_display }}
+  </span>
+
+                                {% if order.status == 'pending' %}
+                                <form
+                                        method="post"
+                                        action="{% url 'orders:order_cancel' order.pk %}"
+                                >
+                                    {% csrf_token %}
+
+                                    <button
+                                            type="submit"
+                                            class="button button--secondary"
+                                    >
+                                        Cancel order
+                                    </button>
+                                </form>
+                                {% endif %}
+                            </div>
+                            <div class="order-table-cell">
+                                <span class="order-total">${{order.total_price}}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="account-pagination">
+                    <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"
+                       class="pagination-link-account {% if not page_obj.has_previous %}disabled{% endif %}">←
+                        Previous</a>
+                    <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% endif %}"
+                       class="pagination-link-account {% if not page_obj.has_next %}disabled{% endif %}">Next →</a>
+                </div>
+                {% else %}
+                <p>Here will be your orders (Go, make some!)</p>
+                {% endif %}
+            </div>
+
+            <!-- Account Information Panel -->
+            <div id="account-info" class="tab-pane">
+                <div class="account-form-container">
+                    <h2 class="account-form-title">Personal Info</h2>
+                    <form id="account-info-form" method="post" action="{% url 'users:update_user' user.id %}"
+                          enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="checkout-form-group">
+                            <label for="acc-image">Avatar</label>
+                            {% if user.avatar %}
+                            <img src="{{ user.avatar.url }}" alt="Avatar" width="100" height="100">
+                            {% else %}
+                            <img src="{% static 'img/icons/User_alt.svg' %}" alt="Default avatar" width="100"
+                                 height="100">
+                            {% endif %}
+                            <input type="file" id="acc-image" name="avatar" class="Input" accept="image/*">
+                        </div>
+                        <div class="checkout-form-group">
+                            <label for="acc-first-name">First Name</label>
+                            <input type="text" id="acc-first-name" name="first_name" class="Input"
+                                   value="{{ user.first_name }}" required>
+                        </div>
+                        <div class="checkout-form-group">
+                            <label for="acc-last-name">Last Name</label>
+                            <input type="text" id="acc-last-name" name="last_name" class="Input"
+                                   value="{{ user.last_name }}" required>
+                        </div>
+                        <div class="checkout-form-group">
+                            <label for="acc-phone">Phone number</label>
+                            <input type="tel" id="acc-phone" name="phone" class="Input" value="{{ user.phone }}"
+                                   required>
+                        </div>
+                        <div class="checkout-form-group">
+                            <label for="acc-email">Email</label>
+                            <input type="email" id="acc-email" name="email" class="Input" value="{{ user.email }}"
+                                   placeholder="example@mail.com" required>
+                        </div>
+                        <div class="checkout-form-group">
+                            <label for="acc-city">City</label>
+                            <input type="text" id="acc-city" name="city" class="Input" placeholder="Tbilisi"
+                                   {% if user.city %} value="{{ user.city }}" {% endif %} required>
+                        </div>
+                        <div class="checkout-form-group">
+                            <label for="acc-address">Shipping address</label>
+                            <textarea id="acc-address" name="address" class="Textarea" placeholder="Charjov st. 12"
+                                      rows="3" required>
+                  {% if user.address %}{{ user.address }}{% endif %}
+              </textarea>
+                        </div>
+                        <button
+                                type="submit"
+                                class="button button--primary button--full-width"
+                        >
+                            Save
+                        </button>
+                    </form>
+
+                    <a href="{% url 'users:password_change' %}"
+                       class = "button button--secondary button--full-width">
+                        Change password
+                    </a>
+
+                    <form method="post" action="{% url 'users:logout' %}">
+                        {% csrf_token %}
+                        <button
+                                type="submit"
+                                class="button button--secondary button--full-width"
+                        >
+                            Logout
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+{% endblock %}

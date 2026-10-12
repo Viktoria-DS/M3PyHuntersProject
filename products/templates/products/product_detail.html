@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ product.name }} | Hop & Barley
+{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+<main class="page-product">
+    <div class="container">
+        <!-- Product Info Section -->
+        <section class="product-details-section">
+            <div class="product-image-container">
+                <img src="{{ product.image.url }}" alt="Citra Hops" class="product-image">
+            </div>
+            <div class="product-info-column">
+                <div class="product-title-price">
+                    <h1 class="product-name">{{ product.name }}</h1>
+
+                    {% if product.average_rating is not None %}
+                    <p>Average rating: {{ product.average_rating|floatformat:1 }} / 5</p>
+                    {% else %}
+                    <p>No ratings yet.</p>
+                    {% endif %}
+                        <div class="price-section">
+                            <span class="price-tag">per 100g</span>
+                            <p class="product-price">${{ product.price }}</p>
+                        </div>
+                    </div>
+                    <div class="product-description">
+                        {{ product.description }}
+                    </div>
+                    <!-- Container for managing the cart -->
+                    <div class="cart-controls">
+                        <!-- Add to Cart button (visible by default) -->
+                        {% if not product_in_cart %}
+                        <form action="{% url 'orders:cart_add' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                            <input type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="product_slug" value="{{ product.slug }}">
+                            <button type="submit"
+                                    class="button button--primary add-to-cart-button"
+                                    id="add-to-cart-btn">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span>Add to Cart</span>
+                            </button>
+                        </form>
+
+
+                        {% else %}
+
+                        <!-- Quantity counter (hidden by default) -->
+                        <div class="quantity-counter" id="quantity-counter">
+                            <form action="{% url 'orders:cart_update' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                <input type="hidden" name="product_slug" value="{{ product.slug }}">
+                                <input type="hidden" name="quantity" value="{{ product_in_cart|add:-1 }}">
+                                <button type="submit" class="quantity-btn" data-action="decrease"
+                                        aria-label="Decrease quantity">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                            </form>
+                            <span class="quantity-value">{{ product_in_cart }} in cart</span>
+
+                            <form action="{% url 'orders:cart_update' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                <input type="hidden" name="product_slug" value="{{ product.slug }}">
+                                <input type="hidden" name="quantity" value="{{ product_in_cart|add:1 }}">
+                                <button type="submit" class="quantity-btn" data-action="increase"
+                                        aria-label="Increase quantity">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+        </section>
+
+        <!-- Technical Specifications Accordion -->
+        <section class="accordion-section">
+            <div class="accordion-item">
+                <div class="accordion-title">
+                    <h3>Technical Specifications</h3>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        {% for key, value in product.specifications.items %}
+                        <li><strong>{{ key }}:</strong> {{ value }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Reviews Section -->
+        <section class="reviews-section">
+            <h2 class="reviews-title">Latest reviews</h2>
+            <div class="reviews-grid">
+                {% for review in product.reviews.all %}
+                <div class="review-card">
+                    <div class="review-rating">
+                        {% for i in review.get_stars %}
+                        <i class="fa-solid fa-star"></i>
+                        {% endfor %}
+                        {% for i in review.get_empty_stars %}
+                        <i class="fa-regular fa-star"></i>
+                        {% endfor %}
+                    </div>
+                    <div class="review-body">
+                        {% if review.heading %}
+                        <h4 class="review-heading">{{ review.heading }}</h4>
+                        {% endif %}
+                        {% if review.comment %}
+                        <p class="review-text">{{ review.comment }}</p>
+                        {% endif %}
+
+                    </div>
+                    <div class="review-author">
+                        {% if review.owner.avatar %}
+                        <img src="{{ review.owner.avatar.url }}" alt="User avatar" class="author-avatar">
+                        {% else %}
+                        <img src="{% static 'img/icons/User_alt.svg' %}" alt="Default avatar" class="author-avatar">
+                        {% endif %}
+                        <span class="author-name">{{ review.owner.username }}</span>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No reviews yet.</p>
+                {% endfor %}
+            </div>
+            {% if not user.is_authenticated %}
+            <p>
+                <a href="{% url 'users:login' %}?next={{ request.get_full_path|urlencode }}">
+                    Log in
+                </a>
+                to leave a review.
+            </p>
+
+            {% elif has_reviewed %}
+            <p>You have already reviewed this product.</p>
+
+            {% elif can_review %}
+            <h3>Write a review</h3>
+
+            <form method="post" action="{% url 'reviews:review_add' slug=product.slug %}">
+                {% csrf_token %}
+                {{ review_form.as_p }}
+
+                <button type="submit" class="button button--primary">
+                    Publish review
+                </button>
+            </form>
+
+            {% else %}
+            <p>You can review this product after your order is delivered.</p>
+            {% endif %}
+        </section>
+    </div>
+</main>
+
+{% endblock %}

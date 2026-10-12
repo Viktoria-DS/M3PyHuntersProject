@@ -1,0 +1,52 @@
+"""
+URL configuration for config project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/6.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.urls import path, include
+
+from django.contrib import admin
+from django.urls import path
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+from orders.views import CheckoutView, CartView
+from products.views import ProductList, ProductDetailsView
+from users.views import AccountView
+
+APPS_URLS = [
+    path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
+    path('orders/', include('orders.urls', namespace = 'orders')),
+    path('products/', include('products.urls', namespace = 'products')),
+    path('reviews/', include('reviews.urls', namespace = 'reviews')),
+    path('shop/', include('shop.urls', namespace = 'shop')),
+    path('', ProductList.as_view(), name='product-list_main'),
+    path('users/', include('users.urls', namespace = 'users')),
+    path('checkout/', CheckoutView.as_view(), name='checkout'),
+    path('account/', AccountView.as_view(), name='account'),
+    path('cart/', CartView.as_view(), name='cart'),
+path('product/<slug:slug>/', ProductDetailsView.as_view(), name='product-detail'),
+
+]
+MEDIA_URLS = [
+    #*static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
+    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+urlpatterns = APPS_URLS
+
+if settings.DEBUG:
+    urlpatterns += MEDIA_URLS
