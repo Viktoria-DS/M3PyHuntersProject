@@ -17,11 +17,10 @@ from django.conf.global_settings import MEDIA_URL
 from dotenv import load_dotenv
 from os import getenv
 
-load_dotenv('.env.local')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv(BASE_DIR / '.env.local')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
@@ -35,7 +34,10 @@ SECRET_KEY = os.getenv(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 't')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv('ALLOWED_HOSTS', '').split(',')
+    if host.strip()]
 
 
 # Application definition
@@ -49,7 +51,10 @@ SYSTEM_APPS = [
     'django.contrib.staticfiles',
 ]
 
-ADDITIONAL_APPS = []
+ADDITIONAL_APPS = [
+'rest_framework',
+'drf_spectacular',
+]
 
 PROJECT_APPS = [
     'users',
@@ -156,3 +161,24 @@ logging.basicConfig(level=logging.DEBUG,
 
 AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'users:login'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_PAGINATION_CLASS': (
+        'rest_framework.pagination.PageNumberPagination'
+    ),
+    'PAGE_SIZE': 6,
+'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'PyHunt Shop API',
+    'DESCRIPTION': 'Product catalogue and customer orders.',
+    'VERSION': '1.0.0',
+}

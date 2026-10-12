@@ -22,7 +22,9 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from products.views import ProductList
+from orders.views import CheckoutView, CartView
+from products.views import ProductList, ProductDetailsView
+from users.views import AccountView
 
 APPS_URLS = [
     path('admin/', admin.site.urls),
@@ -33,6 +35,10 @@ APPS_URLS = [
     path('shop/', include('shop.urls', namespace = 'shop')),
     path('', ProductList.as_view(), name='product-list_main'),
     path('users/', include('users.urls', namespace = 'users')),
+    path('checkout/', CheckoutView.as_view(), name='checkout'),
+    path('account/', AccountView.as_view(), name='account'),
+    path('cart/', CartView.as_view(), name='cart'),
+path('product/<slug:slug>/', ProductDetailsView.as_view(), name='product-detail'),
 
 ]
 MEDIA_URLS = [

@@ -58,3 +58,13 @@ class Product(models.Model):
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
         ordering = ['-created_at']
+        constraints = [
+            models.CheckConstraint(
+                condition = models.Q(price__gte=0),
+                name = "product_price_nonnegative"
+            ),
+            models.CheckConstraint(
+                condition = models.Q(stock__gte=0),
+                name = "product_stock_nonnegative"
+            )
+        ]

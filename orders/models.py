@@ -28,7 +28,7 @@ class Order(models.Model):
     status = models.CharField(max_length=10, choices=OrderStatus.choices,
                               default=OrderStatus.PENDING)
     payment_method = models.CharField(max_length=100)
-    shipping_address = models.CharField(max_length=255)
+    shipping_address = models.TextField()
     total_price = models.DecimalField(default=0, max_digits=10,
                                       decimal_places=2,
                                       validators=[MinValueValidator(0)])
@@ -82,6 +82,13 @@ class Order(models.Model):
         verbose_name = "Order"
         verbose_name_plural = "Orders"
         ordering = ['-created_at']
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(total_price__gte=0),
+                name="order_price_nonnegative"
+            )
+        ]
+
 
 
 class OrderItem(models.Model):
@@ -94,14 +101,6 @@ class OrderItem(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        if self.product.stock < self.quantity:
-            raise ValidationError('Not enough stock available')
-        Product.objects.filter(
-            id=self.product.id, stock__gte=self.quantity
-        ).update(
-            stock=F("stock") - self.quantity
-        )
-
         super().save(*args, **kwargs)
         self.order.update_total_price()
 
@@ -111,3 +110,17 @@ class OrderItem(models.Model):
     class Meta:
         verbose_name = "Order Item"
         verbose_name_plural = "Order Items"
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(price__gte=0),
+                name="item_price_nonnegative"
+            ),
+            models.CheckConstraint(
+                condition = models.Q(quantity__gte=1),
+                name = "quantity_nonnegative"
+            ),
+            models.UniqueConstraint(
+                fields = ['order', 'product'],
+                name = "unique_order_product"
+            )
+        ]

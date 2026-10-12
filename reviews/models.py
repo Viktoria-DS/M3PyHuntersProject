@@ -27,3 +27,15 @@ class Review(models.Model):
 
     def get_empty_stars(self):
         return range(5 - len(self.get_stars()))
+
+    class Meta:
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(rating__gte=1, rating__lte=5),
+                name = "rating_1_to_5"
+            ),
+            models.UniqueConstraint(
+                fields = ['owner', 'product'],
+                name = "unique_review_product")
+
+        ]

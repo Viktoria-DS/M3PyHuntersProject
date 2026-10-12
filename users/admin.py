@@ -1,12 +1,17 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
 from users.models import User
 
 
 @admin.register(User)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff')
-    search_fields = ('username', 'email', 'first_name', 'last_name')
-    list_filter = ('is_staff', 'is_superuser', 'is_active')
-    exclude = ('password',)
+class UserAdmin(UserAdmin):
+    fieldsets = UserAdmin.fieldsets + (
+        (
+            'Additional information',
+            {
+                'fields': ('avatar', 'city', 'address', 'phone'),
+            },
+        ),
+    )
     readonly_fields = ('last_login', 'date_joined')

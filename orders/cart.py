@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.http import HttpRequest
 
 from products.models import Product
@@ -32,10 +33,25 @@ class Cart:
         self.session.modified = True
 
     def __setitem__(self, product: Product, quantity: int):
+        if quantity < 0:
+            raise ValidationError('Quantity cannot be negative')
+
+        if quantity == 0:
+            self.remove(product)
+            return
+
+        if not product.is_active:
+            raise ValidationError('Product is not available')
+
+        if quantity > product.stock:
+            raise ValidationError(f'That amount of product is not available. Only {product.stock} items are available.')
+
         self.data[str(product.pk)] = quantity
         self.save()
 
     def add(self, product: Product, quantity: int):
+        if quantity < 1:
+            raise ValidationError('Add at least one item')
         self[product] = quantity + self[product]
         self.save()
 

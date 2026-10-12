@@ -5,64 +5,86 @@ Cart | Hop & Barley
 {% endblock %}
 
 
-
 {% block content %}
 <!-- Main Content -->
 <main class="cart-page-wrapper">
-  <div class="cart-container">
-    <h1 class="cart-title">Shopping Cart</h1>
+    <div class="cart-container">
+        <h1 class="cart-title">Shopping Cart</h1>
 
-    <div class="cart-items-list" id="cart-items-list">
-      {% for product in cart.get_summary.products %}
-      <div class="cart-item">
-        <a href="{% url 'products:product_details' product.product.slug %}">
-            <img src="{{ product.product.image.url }}" alt="{{ product.product.name }}" class="cart-item__image">
-        </a>
-        <div class="cart-item__body">
-          <div class="cart-item__details">
-            <h2 class="cart-item__name">{{ product.product.name }}</h2>
-            <div class="cart-item__price-info">
-              <p class="cart-item__price" >
-                ${{ product.position_price }}
-              </p>
-              <span class="cart-item__price-tag">per 100g</span>
+        <div class="cart-items-list" id="cart-items-list">
+            {% for product in cart.get_summary.products %}
+            <div class="cart-item">
+                <a href="{% url 'products:product_details' product.product.slug %}">
+                    <img src="{{ product.product.image.url }}" alt="{{ product.product.name }}"
+                         class="cart-item__image">
+                </a>
+                <div class="cart-item__body">
+                    <div class="cart-item__details">
+                        <h2 class="cart-item__name">{{ product.product.name }}</h2>
+                        <div class="cart-item__price-info">
+                            <p class="cart-item__price">
+                                ${{ product.position_price }}
+                            </p>
+                            <span class="cart-item__price-tag">per 100g</span>
+                        </div>
+                    </div>
+                    <div class="cart-item__actions">
+                        <div class="cart-item__quantity-selector">
+                            <form method="post" action="{% url 'orders:cart_update' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_slug" value="{{ product.product.slug }}">
+                                <input type="hidden" name="quantity" value="{{ product.quantity|add:'-1' }}">
+                                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+
+                                <button type="submit" class="quantity-btn-cart" aria-label="Decrease quantity">
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                            </form>
+
+                            <span class="quantity-value-cart">{{ product.quantity }}</span>
+
+                            <form method="post" action="{% url 'orders:cart_update' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_slug" value="{{ product.product.slug }}">
+                                <input type="hidden" name="quantity" value="{{ product.quantity|add:'1' }}">
+                                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+
+                                <button type="submit" class="quantity-btn-cart" aria-label="Increase quantity">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <form method="POST" action="{% url 'orders:cart_remove'%}">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                            <input type="hidden" name="product_slug" value="{{ product.product.slug }}">
+                            <button type="submit" class="button--remove">
+                                Remove <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="cart-item__actions">
-            <div class="cart-item__quantity-selector">
-              <button class="quantity-btn-cart" data-action="decrease"><i class="fa-solid fa-minus"></i></button>
-              <span class="quantity-value-cart">{{ product.quantity }}</span>
-              <button class="quantity-btn-cart" data-action="increase"><i class="fa-solid fa-plus"></i></button>
-            </div>
-              <form method="POST" action="{% url 'orders:cart_remove'%}">
-                  {% csrf_token %}
-                  <input type="hidden" name="next" value="{{ request.get_full_path }}">
-                  <input type="hidden" name="product_slug" value="{{ product.product.slug }}">
-                <button type="submit" class="button--remove">
-                  Remove <i class="fa-solid fa-xmark"></i>
-                </button>
-              </form>
-          </div>
+            {% empty %}
+            <p>Your cart is empty.</p>
+            {% endfor %}
+
         </div>
-      </div>
-      {% empty %}
-        <p>Your cart is empty.</p>
-      {% endfor %}
-
+        {% if cart.data %}
+        <div class="cart-summary">
+            <div class="cart-summary__total">
+                <p>Total</p>
+                <p id="cart-total-price">${{ cart.get_summary.total }}</p>
+            </div>
+            <a href="{% url 'orders:checkout' %}" class="button button--primary button--checkout">Proceed to
+                Checkout</a>
+        </div>
+        {% else %}
+        <div class="cart-summary">
+            <a href="{% url 'products:product_list' %}" class="button button--primary button--checkout">Go to
+                shopping</a>
+        </div>
+        {% endif %}
     </div>
-    {% if cart.data %}
-    <div class="cart-summary">
-      <div class="cart-summary__total">
-        <p>Total</p>
-        <p id="cart-total-price">${{ cart.get_summary.total }}</p>
-      </div>
-      <a href="{% url 'orders:checkout' %}" class="button button--primary button--checkout">Proceed to Checkout</a>
-    </div>
-     {% else %}
-      <div class="cart-summary">
-       <a href="{% url 'products:product_list' %}" class="button button--primary button--checkout">Go to shopping</a>
-      </div>
-     {% endif %}
-  </div>
 </main>
 {% endblock %}

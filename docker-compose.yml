@@ -22,9 +22,14 @@ services:
       env_file:
         - .env
       depends_on:
-        - postgres
+        postgres:
+          condition: service_healthy
+
+      volumes:
+        - media:/app/media
       command: bash -c "uv run python manage.py migrate && uv run python manage.py runserver 0.0.0.0:8000"
       restart: always
 
 volumes:
   pgdata:
+  media:
